@@ -8,10 +8,18 @@
             <menu-unfold-one theme="outline" size="45" fill="#333" v-if="!iconShow"/>
         </div>
         <ul>
-            <li><router-link to="/backend">操作指导</router-link></li>
-            <li><router-link to="">软件下载</router-link></li>
-            <li><router-link to="">产品价格</router-link></li>
-            <li><router-link to="">联系客服</router-link></li>
+            <li>
+                <router-link to="/backend">操作指导</router-link>
+            </li>
+            <li>
+                <router-link to="">软件下载</router-link>
+            </li>
+            <li>
+                <router-link to="">产品价格</router-link>
+            </li>
+            <li>
+                <router-link to="">联系客服</router-link>
+            </li>
         </ul>
         <div id="portrait">
             <img :src="portrait" alt="头像">
@@ -21,7 +29,7 @@
 </template>
 
 <script>
-    import {Home, MenuFoldOne,MenuUnfoldOne} from '@icon-park/vue-next';
+    import {Home, MenuFoldOne, MenuUnfoldOne} from '@icon-park/vue-next';
     import {ref} from "vue";
     import {useRouter} from "vue-router";
 
@@ -32,23 +40,23 @@
             MenuFoldOne,
             MenuUnfoldOne
         },
-        emits:[
+        emits: [
             'changeMenu'
         ],
-        setup(prop,{emit}){
+        setup(prop, {emit}) {
             let router = useRouter()
             let isLogined = localStorage.getItem('userinfo') ? true : false
             let portrait = isLogined ? JSON.parse(localStorage.getItem('userinfo')).portrait : require('@/assets/images/portrait.jpg')
             let iconShow = ref(false)
-            let changeIconShow = ()=>{
+            let changeIconShow = () => {
                 iconShow.value = !iconShow.value
                 emit('changeMenu')
             }
-            let logout = ()=>{
+            let logout = () => {
                 localStorage.clear()
                 router.push('/')
             }
-            return {iconShow,changeIconShow,logout,isLogined,portrait}
+            return {iconShow, changeIconShow, logout, isLogined, portrait}
         }
     }
 </script>
@@ -67,8 +75,6 @@
                 height: 100%;
             }
         }
-
-
 
         ul {
             @media screen and (max-width: 768px) {
@@ -106,7 +112,7 @@
                 display: block;
                 img {
                     width: 50px;
-                    height:50px;
+                    height: 50px;
                     border-radius: 50%;
                 }
                 button {

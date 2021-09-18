@@ -1,9 +1,7 @@
 <template>
-    <input v-model="code" type="text" placeholder="填写管理员给的注册码"/>
     <div>
-        <button>
-            提交
-        </button>
+        <input v-model="code" type="text" placeholder="填写管理员给的注册码"/>
+        <button @click="onSubmit">提交</button>
     </div>
 </template>
 
@@ -13,9 +11,7 @@
     import {post} from "@/network";
 
     export default {
-        components: {
-
-        },
+        components: {},
         props: {
             barIsshow: {
                 type: Boolean,
@@ -51,11 +47,21 @@
 </script>
 
 <style lang="scss" scoped>
-    input{
-        height: 40px;
-        width:100%;
-    }
-    div{
+    div {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
 
+        input {
+            height: 40px;
+            width: 100%;
+        }
+
+        button {
+            margin: 10px;
+            height: 40px;
+            border-radius: 30px;
+            background-color: white;
+        }
     }
 </style>
