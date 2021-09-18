@@ -1,0 +1,137 @@
+.index-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url("assets/images/full-screen-image-2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+  .middle {
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    .left {
+      flex: 3;
+
+      div {
+        display: flex;
+        justify-content: center;
+
+        img {
+          width: 250px;
+          height: 250px;
+        }
+      }
+
+      ul {
+        position: relative;
+
+        li {
+          text-align: center;
+          list-style: none;
+          margin: 35px;
+          font-size: 25px;
+          font-weight: bolder;
+          color: #b0a4e3; //#8d4bbb;
+        }
+      }
+    }
+
+    .right {
+      flex: 2;
+      display: flex;
+      justify-self: center;
+      align-items: center;
+
+      .form {
+        width: 70%;
+        padding: 20px;
+        background: url("assets/images/form.png");
+        background-size: cover;
+        border-radius: 10px;
+
+        h2 {
+          text-align: center;
+          color: white;
+        }
+
+        ul {
+          li {
+            list-style: none;
+            margin: 10px 0;
+            height: 40px;
+
+            span {
+              font-weight: bolder;
+              display: inline-block;
+              width: 25%;
+            }
+
+            input {
+              height: 80%;
+              width: 70%;
+            }
+          }
+
+          div {
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+
+            span {
+              width: 30%;
+              line-height: 40px;
+              font-weight: bolder;
+            }
+
+            input {
+              height: 80%;
+              width: 25%;
+            }
+
+            .img-verify {
+              margin-left: 5px;
+              //width: 60%;
+            }
+          }
+
+          #fpwd {
+            display: flex;
+            justify-content: flex-end;
+
+            a {
+              color: white;
+              padding: 10px;
+            }
+          }
+        }
+
+        #action {
+          text-align: center;
+          padding: 0;
+
+          button {
+            background: none;
+            height: 50px;
+            width: 40%;
+            margin: 0 10px;
+            border-radius: 30px;
+            border: none;
+          }
+
+          button:nth-child(1) {
+            background-color: white;
+          }
+
+          button:nth-child(2) {
+            background-color: cornflowerblue;
+          }
+        }
+      }
+    }
+  }
+
+}
