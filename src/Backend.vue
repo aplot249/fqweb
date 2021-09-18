@@ -20,17 +20,8 @@
                     <align-text-both-one theme="outline" size="24" fill="#333"/>
                 </div>
                 <ul>
-                    <li>
-                        <router-link to="">Any 安卓教程</router-link>
-                    </li>
-                    <li>
-                        <router-link to="">Any 苹果教程</router-link>
-                    </li>
-                    <li>
-                        <router-link to="">Any Windows教程</router-link>
-                    </li>
-                    <li>
-                        <router-link to="">Any Mabook教程</router-link>
+                    <li v-for="item in VpnArticles" :key="item.id">
+                        <router-link :to="'/article/'+item.id">{{item.title}}</router-link>
                     </li>
                 </ul>
                 <div class="title">
@@ -93,6 +84,7 @@
     import {Send, Avatar, MoreFour, Download, AlignTextBothOne} from '@icon-park/vue-next';
     import {PullDown} from "@/assets/js/PullDown";
     import {ref, onMounted} from "vue";
+    import {get} from "@/network";
 
     export default {
         components: {
@@ -109,13 +101,22 @@
             // pc端左侧菜单会自动显示；移动端显示菜单点击按钮，不显示菜单；这是写在css样式文件里控制的
             // 既然菜单点击按钮只在移动端才显示，pc不显示，那么下面给他绑定的事件就只在移动端起作用
             let showMenu = ref(false)
+            let VpnArticles = ref([])
             let changeMenu = () => {
                 showMenu.value = !showMenu.value
             }
+            let getVpnArticle = ()=>{
+                get('/article/article/?tag=Vpn&type=anyconnect').then(
+                    res=>{
+                        VpnArticles.value = res.data.results
+                    }
+                )
+            }
             onMounted(() => {
                 new PullDown("left")
+                getVpnArticle()
             })
-            return {showMenu, changeMenu}
+            return {showMenu, VpnArticles, changeMenu}
         }
     }
 </script>
@@ -141,4 +142,7 @@
             float: right;
         }
     }
+    /*.right{*/
+    /*    background-color: blue !important;*/
+    /*}*/
 </style>

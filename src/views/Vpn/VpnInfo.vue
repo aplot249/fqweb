@@ -122,7 +122,7 @@
             li {
                 width: 100%;
                 list-style: none;
-                /*margin: 10px;*/
+                margin: 10px 0;
 
                 span {
                     width: 35%;

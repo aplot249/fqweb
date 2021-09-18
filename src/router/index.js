@@ -13,7 +13,7 @@ const VpnCodeOrInfo = () => import ('@/views/Vpn/VpnInfoOrCode')
 // const AnyconnetSoftware = () => import ('../views/Others/AnyconnetSoftware')
 
 // const ArticleCreate = () => import ('../views/Article/ArticleCreate')
-// const ArticleDetail = () => import ("../views/Article/ArticleDetail")
+const ArticleDetail = () => import ("../views/ArticleDetail")
 // const TagArticle = () => import ("../views/Article/TagArticle")
 // const ArticleClassify = () => import ("../views/Article/ArticleClassify")
 // const ArticleCatagory = () => import ('../views/Article/ArticleCatagory')
@@ -48,7 +48,17 @@ const routes = [
                         title: "翻墙操作",
                         requireAuthorized: true
                     }
-                }
+                },
+                {
+                    path: '/article/:id',
+                    name: 'articledetail',
+                    component: ArticleDetail,
+                    meta: {
+                        title: "操作教程",
+                        // requireAuthorized: true
+                    },
+                },
+
             ]
         },
 

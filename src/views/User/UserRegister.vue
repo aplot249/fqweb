@@ -2,10 +2,10 @@
     <div class="form">
         <h2>新用户注册</h2>
         <ul>
-            <li><span>用户名：</span><input type="text"></li>
-            <li><span>邮箱：</span><input type="email"></li>
-            <li><span>密码：</span><input type="password"></li>
-            <li><span>确认密码：</span><input type="password"></li>
+            <li><span>用户名：</span><input type="text" placeholder="3-15位字母数字组合"></li>
+            <li><span>邮箱：</span><input type="email" placeholder="推荐QQ邮箱"></li>
+            <li><span>密码：</span><input type="password" placeholder="2-15位字母数字组合"></li>
+            <li><span>确认密码：</span><input type="password" placeholder="再次确认密码"></li>
             <div>
                 <span>验证码：</span>
                 <input type="text" v-model="registerInfo.verify">

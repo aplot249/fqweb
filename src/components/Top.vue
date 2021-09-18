@@ -23,7 +23,7 @@
         </ul>
         <div id="portrait">
             <img :src="portrait" alt="头像">
-            <button @click="logout">{{ isLogined ? '注销登录' : '游客身份'}}</button>
+            <button @click="logout">{{ isLogined ? '注销登录' : '未登录'}}</button>
         </div>
     </div>
 </template>
@@ -123,7 +123,7 @@
                     vertical-align: top;
                 }
                 button:hover {
-                    color: red;
+                    color: white;
                     text-decoration-line: underline;
                 }
             }
