@@ -3,13 +3,16 @@
         <div class="title">
             {{title}}
         </div>
-        <div class="content" v-html="content"></div>
+        <div class="content" v-html="content" ref="divScroll"></div>
+        <div class="goTop" v-if="goTopShow" @click="doScrollTop">
+            <span>返回顶部</span>
+        </div>
     </div>
 </template>
 
 <script>
     import {useRoute, onBeforeRouteUpdate} from "vue-router";
-    import {onMounted, reactive, toRefs} from "vue";
+    import {ref, onMounted, reactive, toRefs} from "vue";
     import {get} from "@/network";
 
     export default {
@@ -21,7 +24,19 @@
                 title: '',
                 content: ''
             })
+            let goTopShow = ref(false)
+            let divScroll = ref(null);
+            let doScrollTop = () => {
+                divScroll.value.scrollTop = 0
+            }
             onMounted(() => {
+                divScroll.value.addEventListener('scroll', function () {
+                    if(this.scrollTop > 1000) {
+                        goTopShow.value = true
+                    } else {
+                        goTopShow.value = false
+                    }
+                })
                 get(`/article/article/${route.params.id}`).then(
                     res => {
                         console.log(res.data)
@@ -40,8 +55,7 @@
                     }
                 )
             })
-
-            return {...toRefs(article)}
+            return {...toRefs(article), divScroll, goTopShow, doScrollTop}
         }
     }
 
@@ -52,7 +66,7 @@
         display: flex;
         margin: 0;
         flex-direction: column;
-        width: inherit;
+        width: calc(100% - 20px); //占据父元素所有宽度 - 20px
         height: calc(100vh - 135px);
 
         .title {
@@ -66,23 +80,51 @@
 
         .content {
             overflow-y: scroll;
-            /*margin: 0 10px;*/
             width: inherit;
-
             scrollbar-width: none; /* firefox */
             -ms-overflow-style: none; /* IE 10+ */
 
             word-wrap: break-word;
             word-break: break-all;
+
         }
 
         .content::-webkit-scrollbar {
             display: none; /* Chrome Safari */
         }
+
+        .goTop {
+            height: 50px;
+            width: 50px;
+            background: red;
+            border-radius: 50px;
+            position: fixed;
+            top: 84%;
+            right: 3%;
+            display: block;
+
+            span {
+                font-size: 15px;
+                color: #fff;
+                position: absolute;
+                top: 3px;
+                left: 10px;
+            }
+        }
     }
 </style>
 <style lang="css">
-    /*img{*/
-    /*    width: 100px !important;*/
-    /*}*/
+    @media screen and (max-width: 768px) {
+        .content img {
+            /*width: calc(100vw - 200px) !important;*/
+            width: calc(100%) !important;
+        }
+    }
+
+    @media screen and (min-width: 769px) {
+        .content {
+            text-align: center;
+        }
+    }
+
 </style>

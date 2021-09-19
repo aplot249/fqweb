@@ -142,7 +142,4 @@
             float: right;
         }
     }
-    /*.right{*/
-    /*    background-color: blue !important;*/
-    /*}*/
 </style>

@@ -3,7 +3,7 @@ import store from '../store'
 
 const Index = ()=>import('@/Index')
 const Backend = () => import ("@/Backend")
-
+const Instruction =()=>import('@/Instruction')
 const VpnCodeOrInfo = () => import ('@/views/Vpn/VpnInfoOrCode')
 
 // const Center = () => import ('../views/Others/Center.vue')
@@ -37,10 +37,19 @@ const routes = [
             path: '/backend',
             name: 'backend',
             component: Backend,
+            // redirect:'/backend/instruction',
             meta: {
                 'requireAuthorized':true
             },
             children:[
+                {
+                    path: '',
+                    component: Instruction,
+                    meta: {
+                        title: "操作说明",
+                        requireAuthorized: true
+                    }
+                },
                 {
                     path: 'vpn',
                     component: VpnCodeOrInfo,
