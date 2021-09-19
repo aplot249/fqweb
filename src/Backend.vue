@@ -12,7 +12,7 @@
                         <router-link to="/backend/vpn">账号信息</router-link>
                     </li>
                     <li>
-                        <router-link to="">更换翻墙方式</router-link>
+                        <router-link to="">更换方式</router-link>
                     </li>
                 </ul>
                 <div class="title">
@@ -45,10 +45,13 @@
                 </div>
                 <ul>
                     <li>
-                        <router-link to="">账号续费</router-link>
+                        <router-link to="">邀请他人</router-link>
                     </li>
                     <li>
                         <router-link to="">更改网站登录密码</router-link>
+                    </li>
+                    <li>
+                        <router-link to="">更改翻墙账号密码</router-link>
                     </li>
                     <li>
                         <router-link to="">我要退款</router-link>
@@ -60,7 +63,7 @@
                 </div>
                 <ul>
                     <li>
-                        <router-link to="">抖音视频抓取</router-link>
+                        <router-link to="">抖音视频下载</router-link>
                     </li>
                     <li>
                         <router-link to="">音乐突破版权限制</router-link>

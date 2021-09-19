@@ -11,9 +11,9 @@
             <li>
                 <router-link to="/backend">操作指导</router-link>
             </li>
-            <li>
-                <router-link to="">软件下载</router-link>
-            </li>
+<!--            <li>-->
+<!--                <router-link to="">软件下载</router-link>-->
+<!--            </li>-->
             <li>
                 <router-link to="">产品价格</router-link>
             </li>
@@ -22,7 +22,7 @@
             </li>
         </ul>
         <div id="portrait">
-            <img :src="portrait" alt="头像">
+            <img :src="portrait ? portrait : require('@/assets/images/portrait.jpg')" alt="头像">
             <button @click="logout">{{ isLogined ? '注销登录' : '未登录'}}</button>
         </div>
     </div>
@@ -111,8 +111,8 @@
             @media screen and (min-width: 769px) {
                 display: block;
                 img {
-                    width: 50px;
-                    height: 50px;
+                    width: 45px;
+                    height: 45px;
                     border-radius: 50%;
                 }
                 button {

@@ -109,12 +109,12 @@
 
 <style scoped lang="scss">
     div {
+        /*height:calc(100vh - 100px);*/
+        height: inherit;
+        width:100%;
         h2 {
-            margin-top: 0;
             text-align: center;
         }
-
-        width: 100%;
 
         ul {
             padding-left: 0;
@@ -141,7 +141,7 @@
         .radios {
             width: 100%;
             display: flex;
-
+            height: auto;
             span {
                 display: block;
                 width: 35%;

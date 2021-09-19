@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h2>新用户或账号已到期续费</h2>
         <input v-model="code" type="text" placeholder="填写管理员给的注册码"/>
         <button @click="onSubmit">提交</button>
     </div>
@@ -50,8 +51,11 @@
     div {
         width: 60%;
         display: flex;
+        height: inherit;
         flex-direction: column;
-
+        h2{
+            text-align: center;
+        }
         input {
             height: 40px;
             width: 100%;

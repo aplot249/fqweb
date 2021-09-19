@@ -28,6 +28,7 @@ const routes = [
         {
             path: '/',
             name: 'index',
+            alias:'/login',
             component: Index,
             meta: {
                 title: "首页"

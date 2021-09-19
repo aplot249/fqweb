@@ -13,7 +13,7 @@
                 </ul>
             </div>
             <div class="right">
-                <UserRegister v-if="!login" @changeOperate="changeOperate"></UserRegister>
+                <UserRegister v-if="!login" @changeOperate="changeOperate" :initiator="initiator"></UserRegister>
                 <UserLogin v-else-if="login" @changeOperate="changeOperate"></UserLogin>
             </div>
         </div>
@@ -26,7 +26,9 @@
     import Bottom from "@/components/Bottom";
     import UserRegister from "@/views/User/UserRegister.vue";
     import UserLogin from "@/views/User/UserLogin.vue";
-    import {ref, reactive} from "vue";
+    import {ref, onMounted} from "vue";
+    import {useRoute} from "vue-router";
+    import {get} from "@/network";
 
     export default {
         name: "Index",
@@ -37,11 +39,32 @@
             UserLogin
         },
         setup() {
+            let route = useRoute()
+            let initiator = ref(null)
             let login = ref(true)
             let changeOperate = () => {
                 login.value = !login.value
             }
-            return {login, changeOperate}
+            onMounted(() => {
+                console.log(route.query)
+                //用户激活链接
+                if (new RegExp('login').test(route.fullPath)) {
+                    get(`/user/active/${route.query.login}`).then(
+                        res => {
+                            if (res.data.detail != "邮箱已激活，可以登录。") {
+                                alert("激活失败")
+                            } else {
+                                alert("激活成功，可以登录")
+                            }
+                        }
+                    )
+                }
+                //邀请注册链接
+                if (new RegExp('share').test(route.fullPath)) {
+                    initiator.value = route.query.share
+                }
+            })
+            return {login, changeOperate, initiator}
         }
     }
 </script>
@@ -62,7 +85,8 @@
     button:nth-child(2) {
         background-color: cornflowerblue;
     }
-    .icon{
+
+    .icon {
         display: none;
     }
 </style>

@@ -2,7 +2,7 @@
     <div class="form">
         <h2>用户登录</h2>
         <ul>
-            <li><span>用户名：</span><input type="text"   v-model="loginInfo.username" placeholder="输入用户名或邮箱号"></li>
+            <li><span>用户名：</span><input type="text" v-model="loginInfo.username" placeholder="输入用户名或邮箱号"></li>
             <li><span>密码：</span><input type="password" v-model="loginInfo.password" placeholder="输入密码"></li>
             <div>
                 <span>验证码：</span>
@@ -40,19 +40,23 @@
             let router = useRouter()
             let route = useRoute()
             let loginInfo = reactive({
-                username:'',
-                password:'',
+                username: '',
+                password: '',
                 verify: ''
             })
             let clickbtn = () => {
-                post('/user/token/',{'username':loginInfo.username,'password':loginInfo.password}).then(
-                    res=>{
-                        router.push('/backend')
-                        // console.log(res.data)
-                        localStorage.setItem('userinfo',JSON.stringify(res.data))
-                        store.commit('changeLoginStatus',true)
+                post('/user/token/', {'username': loginInfo.username, 'password': loginInfo.password}).then(
+                    res => {
+                        console.log(res.data)
+                        if (res.data.is_active) {
+                            router.push('/backend')
+                            localStorage.setItem('userinfo', JSON.stringify(res.data))
+                            store.commit('changeLoginStatus', true)
+                        }else {
+                            alert("邮箱没有激活")
+                        }
                     }
-                ).catch(err=>console.log(err))
+                ).catch(err => console.log(err))
             }
             return {loginInfo, clickbtn}
         }
