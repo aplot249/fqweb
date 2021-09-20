@@ -5,7 +5,8 @@ const Index = ()=>import('@/Index')
 const Backend = () => import ("@/Backend")
 const Instruction =()=>import('@/Instruction')
 const VpnCodeOrInfo = () => import ('@/views/Vpn/VpnInfoOrCode')
-
+const Software = () => import ('../views/Software')
+const Vxlink = ()=>import('../views/VxLink')
 // const Center = () => import ('../views/Others/Center.vue')
 // const FileWebSocket = () => import ('../views/Others/FileWebSocket')
 // const Douyin = () => import ('../views/Others/Douyin')
@@ -38,7 +39,6 @@ const routes = [
             path: '/backend',
             name: 'backend',
             component: Backend,
-            // redirect:'/backend/instruction',
             meta: {
                 'requireAuthorized':true
             },
@@ -60,7 +60,7 @@ const routes = [
                     }
                 },
                 {
-                    path: '/article/:id',
+                    path: 'article/:id',
                     name: 'articledetail',
                     component: ArticleDetail,
                     meta: {
@@ -68,7 +68,22 @@ const routes = [
                         // requireAuthorized: true
                     },
                 },
-
+                {
+                    path: 'software/:type',
+                    name: 'software',
+                    component: Software,
+                    meta: {
+                        title: "软件下载"
+                    }
+                },
+                {
+                    path: 'vxlink',
+                    name: 'vxlink',
+                    component: Vxlink,
+                    meta: {
+                        title: "公众号文章转pdf"
+                    }
+                },
             ]
         },
 

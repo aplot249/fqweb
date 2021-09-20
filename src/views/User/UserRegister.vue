@@ -14,7 +14,7 @@
         </ul>
         <div id="action">
             <button @click="btnSubmit">注册</button>
-            <button @click="clickbtn">前去登录</button>
+            <button @click="btnClick">前去登录</button>
         </div>
     </div>
 </template>
@@ -67,10 +67,10 @@
                     }
                 )
             }
-            let clickbtn = () => {
+            let btnClick = () => {
                 emit('changeOperate')
             }
-            return {registerInfo,btnSubmit, clickbtn,verifyRef}
+            return {registerInfo,btnSubmit, btnClick,verifyRef}
         }
     }
 </script>

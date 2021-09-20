@@ -24,8 +24,8 @@
 <script>
     import Top from "@/components/Top";
     import Bottom from "@/components/Bottom";
-    import UserRegister from "@/views/User/UserRegister.vue";
-    import UserLogin from "@/views/User/UserLogin.vue";
+    import UserRegister from "@/views/User/UserRegister";
+    import UserLogin from "@/views/User/UserLogin";
     import {ref, onMounted} from "vue";
     import {useRoute} from "vue-router";
     import {get} from "@/network";

@@ -12,7 +12,7 @@
                         <router-link to="/backend/vpn">账号信息</router-link>
                     </li>
                     <li>
-                        <router-link to="">更换方式</router-link>
+                        <router-link to="">更换翻墙方式</router-link>
                     </li>
                 </ul>
                 <div class="title">
@@ -21,7 +21,7 @@
                 </div>
                 <ul>
                     <li v-for="item in VpnArticles" :key="item.id">
-                        <router-link :to="'/article/'+item.id">{{item.title}}</router-link>
+                        <router-link :to="'/backend/article/'+item.id">{{item.title}}</router-link>
                     </li>
                 </ul>
                 <div class="title">
@@ -30,13 +30,13 @@
                 </div>
                 <ul>
                     <li>
-                        <router-link to="">翻墙软件</router-link>
+                        <router-link to="/backend/software/vpn">翻墙软件</router-link>
                     </li>
                     <li>
-                        <router-link to="">国外安卓软件</router-link>
+                        <router-link to="/backend/software/android">国外安卓软件</router-link>
                     </li>
                     <li>
-                        <router-link to="">Windows软件</router-link>
+                        <router-link to="/backend/software/windows">Windows软件</router-link>
                     </li>
                 </ul>
                 <div class="title">
@@ -45,16 +45,13 @@
                 </div>
                 <ul>
                     <li>
-                        <router-link to="">邀请他人</router-link>
+                        <router-link to="">邀请他人得奖励</router-link>
                     </li>
                     <li>
                         <router-link to="">更改网站登录密码</router-link>
                     </li>
                     <li>
                         <router-link to="">更改翻墙账号密码</router-link>
-                    </li>
-                    <li>
-                        <router-link to="">我要退款</router-link>
                     </li>
                 </ul>
                 <div class="title">
@@ -69,7 +66,7 @@
                         <router-link to="">音乐突破版权限制</router-link>
                     </li>
                     <li>
-                        <router-link to="">微信公众号文章转pdf</router-link>
+                        <router-link to="/backend/vxlink">微信公众号文章转pdf</router-link>
                     </li>
                 </ul>
             </div>

@@ -14,7 +14,7 @@
             </div>
         </ul>
         <div id="action">
-            <button @click="clickbtn">登录</button>
+            <button @click="btnClick">登录</button>
             <button @click="this.$emit('changeOperate')">新用户注册</button>
         </div>
     </div>
@@ -44,7 +44,7 @@
                 password: '',
                 verify: ''
             })
-            let clickbtn = () => {
+            let btnClick = () => {
                 post('/user/token/', {'username': loginInfo.username, 'password': loginInfo.password}).then(
                     res => {
                         console.log(res.data)
@@ -58,7 +58,7 @@
                     }
                 ).catch(err => console.log(err))
             }
-            return {loginInfo, clickbtn}
+            return {loginInfo, btnClick}
         }
     }
 </script>

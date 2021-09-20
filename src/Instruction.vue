@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div class="instruction-content">
         <h2>操作指引（需要先阅读）：</h2>
         <p>手机端本网站“菜单”的出现，需要点击屏幕右上角折叠按钮</p>
         <ol>
@@ -23,7 +23,7 @@
 </script>
 
 <style scoped lang="scss">
-.content{
+.instruction-content{
     display: flex;
     flex-direction: column;
     height: 100%;

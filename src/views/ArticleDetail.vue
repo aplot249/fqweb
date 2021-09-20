@@ -3,7 +3,7 @@
         <div class="title">
             {{title}}
         </div>
-        <div class="content" v-html="content" ref="divScroll"></div>
+        <div class="article-content" v-html="content" ref="divScroll"></div>
         <div class="goTop" v-if="goTopShow" @click="doScrollTop">
             <span>返回顶部</span>
         </div>
@@ -78,7 +78,7 @@
             text-align: center;
         }
 
-        .content {
+        .article-content {
             overflow-y: scroll;
             width: inherit;
             scrollbar-width: none; /* firefox */
@@ -89,7 +89,7 @@
 
         }
 
-        .content::-webkit-scrollbar {
+        .article-content::-webkit-scrollbar {
             display: none; /* Chrome Safari */
         }
 
@@ -115,14 +115,14 @@
 </style>
 <style lang="css">
     @media screen and (max-width: 768px) {
-        .content img {
+        .article-content img {
             /*width: calc(100vw - 200px) !important;*/
             width: calc(100%) !important;
         }
     }
 
     @media screen and (min-width: 769px) {
-        .content {
+        .article-content {
             text-align: center;
         }
     }
