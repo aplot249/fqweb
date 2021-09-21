@@ -114,6 +114,7 @@
             input {
                 display: inline-block;
                 width: 80%;
+                height: 30px;
             }
         }
 
@@ -134,11 +135,19 @@
         table {
             text-align: center;
             margin: auto;
-
+            width: 80%;
             tr {
                 td {
-                    margin: 10px;
                     border: 1px solid;
+                }
+                td:nth-child(1){
+                    width: 25%;
+                }
+                td:nth-child(2){
+                    width: 50%;
+                }
+                td:nth-child(3){
+                    width: 15%;
                 }
             }
         }
