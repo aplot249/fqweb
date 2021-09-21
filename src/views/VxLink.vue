@@ -137,6 +137,7 @@
             margin: auto;
             width: 80%;
             tr {
+                height: 40px;
                 td {
                     border: 1px solid;
                 }
