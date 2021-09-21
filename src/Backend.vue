@@ -45,13 +45,10 @@
                 </div>
                 <ul>
                     <li>
-                        <router-link to="">邀请他人得奖励</router-link>
+                        <router-link to="/backend/invitation">邀请他人得奖励</router-link>
                     </li>
                     <li>
-                        <router-link to="">更改网站登录密码</router-link>
-                    </li>
-                    <li>
-                        <router-link to="">更改翻墙账号密码</router-link>
+                        <router-link to="/backend/changepasswd">更改密码</router-link>
                     </li>
                 </ul>
                 <div class="title">
@@ -60,10 +57,10 @@
                 </div>
                 <ul>
                     <li>
-                        <router-link to="">抖音视频下载</router-link>
+                        <router-link to="/backend/douyin">抖音视频互动</router-link>
                     </li>
                     <li>
-                        <router-link to="">音乐突破版权限制</router-link>
+                        <a href="http://music.chuanyun101.com/" target="_blank">音乐突破版权限制</a>
                     </li>
                     <li>
                         <router-link to="/backend/vxlink">微信公众号文章转pdf</router-link>

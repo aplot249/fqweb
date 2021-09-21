@@ -37,7 +37,7 @@
             }
         },
         emits: [
-            'changeOperate',
+            'changeStatus',
         ],
         setup(prop, {emit}) {
             const verifyRef = ref(null)
@@ -51,26 +51,46 @@
                 verify: ''
             })
             let btnSubmit = () => {
-                console.log(verifyRef.value.imgCode)
                 if (verifyRef.value.imgCode.toLowerCase() !== registerInfo.verify.toLowerCase()) {
-                    console.log("验证码不相等")
-                    return false
+                    console.log("验证码错误")
+                    return;
+                }
+                if (!/[0-9a-zA-Z]{3,15}/.test(registerInfo.username)) {
+                    alert("用户名格式不符")
+                    return;
+                }
+                if (!/\w+@(qq|163).com/.test(registerInfo.email)) {
+                    alert("邮箱格式不符，仅支持QQ和163邮箱")
+                    return;
+                }
+                if (!/[0-9a-zA-Z]{3,15}/.test(registerInfo.password1)) {
+                    alert("密码格式不符")
+                    return;
+                }
+                if (!/[0-9a-zA-Z]{3,15}/.test(registerInfo.password2)) {
+                    alert("确认密码格式不符")
+                    return;
                 }
                 post("/user/create/", {
                     'username': registerInfo.username,
                     'email': registerInfo.email,
                     'password': registerInfo.password1,
-                    'initiator': prop.initiator // 邀请发起人
+                    'initiator': prop.initiator // 注册邀请发起人
                 }).then(
-                    res=>{
-                        console.log(res.data,'注册成功，已发送邮件')
+                    res => {
+                        alert('注册成功，已向你填写的邮箱发送账号激活邮件，请先打开邮箱激活账号，再登录')
+                    },
+                    err=>{
+                        if(err.response.status == '400'){
+                            alert("用户名重复")
+                        }
                     }
                 )
             }
             let btnClick = () => {
-                emit('changeOperate')
+                emit('changeStatus','login')
             }
-            return {registerInfo,btnSubmit, btnClick,verifyRef}
+            return {registerInfo, btnSubmit, btnClick, verifyRef}
         }
     }
 </script>

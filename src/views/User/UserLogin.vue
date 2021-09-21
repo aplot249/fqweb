@@ -10,12 +10,12 @@
                 <vue-img-verify ref="verifyRef"/>
             </div>
             <div id="fpwd">
-                <a href="javascript:void(0)">忘记密码？</a>
+                <a @click="changeModalShow" href="javascript:void(0)">忘记密码？</a>
             </div>
         </ul>
         <div id="action">
             <button @click="btnClick">登录</button>
-            <button @click="this.$emit('changeOperate')">新用户注册</button>
+            <button @click="this.$emit('changeStatus','register')">新用户注册</button>
         </div>
     </div>
 </template>
@@ -32,7 +32,8 @@
             vueImgVerify,
         },
         emits: [
-            'changeOperate',
+            'changeStatus',
+            'changeModalShow'
         ],
         setup(prop, {emit}) {
             const verifyRef = ref(null)
@@ -44,7 +45,18 @@
                 password: '',
                 verify: ''
             })
+            let changeModalShow = ()=>{
+                emit('changeModalShow')
+            }
             let btnClick = () => {
+                if (!/[0-9a-zA-Z_]{3,15}/.test(loginInfo.username)) {
+                    alert("用户名格式不符")
+                    return;
+                }
+                if (!/[0-9a-zA-Z]{3,15}/.test(loginInfo.password)) {
+                    alert("密码格式不符")
+                    return;
+                }
                 post('/user/token/', {'username': loginInfo.username, 'password': loginInfo.password}).then(
                     res => {
                         console.log(res.data)
@@ -53,12 +65,17 @@
                             localStorage.setItem('userinfo', JSON.stringify(res.data))
                             store.commit('changeLoginStatus', true)
                         }else {
-                            alert("邮箱没有激活")
+                            alert("邮箱没有激活，请先激活再登录")
+                        }
+                    },
+                    err=>{
+                        if(err.response.status == '400'){
+                            alert("用户名或密码错误，请重试")
                         }
                     }
-                ).catch(err => console.log(err))
+                )
             }
-            return {loginInfo, btnClick}
+            return {loginInfo, btnClick,changeModalShow}
         }
     }
 </script>

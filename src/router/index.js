@@ -7,6 +7,9 @@ const Instruction =()=>import('@/Instruction')
 const VpnCodeOrInfo = () => import ('@/views/Vpn/VpnInfoOrCode')
 const Software = () => import ('../views/Software')
 const Vxlink = ()=>import('../views/VxLink')
+const Douyin = ()=>import('../views/Douyin')
+const ChangePasswd = ()=> import('../views/ChangePasswd')
+const Invitation = ()=>import('../views/Invitation')
 // const Center = () => import ('../views/Others/Center.vue')
 // const FileWebSocket = () => import ('../views/Others/FileWebSocket')
 // const Douyin = () => import ('../views/Others/Douyin')
@@ -82,6 +85,30 @@ const routes = [
                     component: Vxlink,
                     meta: {
                         title: "公众号文章转pdf"
+                    }
+                },
+                {
+                    path: 'douyin',
+                    name: 'douyin',
+                    component: Douyin,
+                    meta: {
+                        title: "抖音视频你发我评"
+                    }
+                },
+                {
+                    path: 'changepasswd',
+                    name: 'changepasswd',
+                    component: ChangePasswd,
+                    meta: {
+                        title: "更改密码"
+                    }
+                },
+                {
+                    path: 'invitation',
+                    name: 'invitation',
+                    component: Invitation,
+                    meta: {
+                        title: "邀请得奖励"
                     }
                 },
             ]

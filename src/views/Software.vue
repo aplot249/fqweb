@@ -1,11 +1,16 @@
 <template>
     <div class="content">
         <h2>软件下载</h2>
-        <ul>
-            <li v-for="(item,index) in softwares" :key="index">
-                <span>{{ item.content}}</span><input type="text" :value="item.href" disabled/>
-            </li>
-        </ul>
+        <table>
+            <tr>
+                <th>名称</th>
+                <th>下载地址</th>
+            </tr>
+            <tr v-for="(item,index) in softwares" :key="index">
+                <td>{{ item.content}}</td>
+                <td><a :href="item.href" target="_blank">点我下载</a></td>
+            </tr>
+        </table>
     </div>
 </template>
 
@@ -21,11 +26,11 @@
             let route = useRoute()
             let softwares = ref([])
             let getVpnSoftwares = () => {
-                let names = ['Anconnect Windows10','Anconnect Windows7、8','Anconnect 安卓','Anconnect Macbook','Anconnect Macbook备用','Anconnect Linux']
+                let names = ['Anconnect Windows10', 'Anconnect Windows7、8', 'Anconnect 安卓', 'Anconnect Macbook', 'Anconnect Macbook备用', 'Anconnect Linux']
                 get("/vpn/vpnsoftware/").then(
                     res => {
                         let results = res.data.res
-                        for(let i=0;i<results.length;i++){
+                        for (let i = 0; i < results.length; i++) {
                             // console.log(results[i])
                             results[i]['content'] = names[i]
                         }
@@ -58,24 +63,15 @@
             text-align: center;
         }
 
-        ul {
-            padding-left: 0;
+        table {
+            width: 80%;
+            margin: 0 auto;
 
-            li {
-                width: 100%;
-                list-style: none;
-                margin: 10px 0;
-
-                span {
-                    width: 35%;
-                    display: inline-block;
-                    line-height: 40px;
+            tr {
+                height: 40px;
+                th,td {
+                    border: 1px solid;
                     text-align: center;
-                }
-
-                input {
-                    width: 55%;
-                    height: 40px;
                 }
             }
         }
