@@ -4,22 +4,19 @@
             <img src="@/assets/images/logo.png" alt="logo">
         </div>
         <div class="icon" @click="changeIconShow">
-            <menu-fold-one theme="outline" size="45" fill="#333" v-if="iconShow"/>
-            <menu-unfold-one theme="outline" size="45" fill="#333" v-if="!iconShow"/>
+            <menu-fold-one theme="outline" size="36" fill="#333" v-if="iconShow"/>
+            <menu-unfold-one theme="outline" size="36" fill="#333" v-if="!iconShow"/>
         </div>
         <ul>
+            <li>
+                <a href="javascript:void(0)" @click="changeLeftInfo('price')">产品价格</a>
+            </li>
             <li>
                 <router-link to="/backend">操作指导</router-link>
             </li>
 <!--            <li>-->
-<!--                <router-link to="">软件下载</router-link>-->
+<!--                <a href="javascript:void(0)" @click="changeLeftInfo('service')">联系客服</a>-->
 <!--            </li>-->
-            <li>
-                <router-link to="">产品价格</router-link>
-            </li>
-            <li>
-                <router-link to="">联系客服</router-link>
-            </li>
         </ul>
         <div id="portrait">
             <img :src="portrait ? portrait : require('@/assets/images/portrait.jpg')" alt="头像">
@@ -41,7 +38,8 @@
             MenuUnfoldOne
         },
         emits: [
-            'changeMenu'
+            'changeMenu',
+            'changeLeftInfo'
         ],
         setup(prop, {emit}) {
             let router = useRouter()
@@ -57,14 +55,17 @@
                 isLogined.value = false
                 router.push('/')
             }
-            return {iconShow, changeIconShow, logout, isLogined, portrait}
+            let changeLeftInfo =(val)=>{
+                emit('changeLeftInfo',val)
+            }
+            return {iconShow, changeIconShow, logout, isLogined, portrait,changeLeftInfo}
         }
     }
 </script>
 
 <style lang="scss" scoped>
     .top {
-        margin-top: 5px;
+        margin: 5px 0;
         display: flex;
         height: 50px;
         line-height: 50px;

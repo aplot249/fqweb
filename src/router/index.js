@@ -272,7 +272,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     // 如果没有登录， 在这里到login
     if (to.meta.requireAuthorized && store.state.isLogined === false) {
-        alert("请先登录")
+        alert("请先登录，没有账号请注册")
         return next('/')
     } else {
         next()
