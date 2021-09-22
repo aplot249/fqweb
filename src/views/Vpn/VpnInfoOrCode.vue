@@ -1,6 +1,6 @@
 <template>
-    <vpn-code v-if="status=='code'" @changestatus="changestatus"/>
-    <vpn-info v-else-if="status=='info'"/>
+    <vpn-code v-if="status=='info'" @changestatus="changestatus"/>
+    <vpn-info v-else-if="status=='code'"/>
     <!--    <div>-->
     <!--        <button @click="$router.push('/list/vpn')"> 查看教程 </button>-->
     <!--        <button @click="$router.push('/vpnsoftware')"> 安装软件 </button>-->

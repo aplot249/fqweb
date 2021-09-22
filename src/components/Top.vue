@@ -20,7 +20,7 @@
         </ul>
         <div id="portrait">
             <img :src="portrait ? portrait : require('@/assets/images/portrait.jpg')" alt="头像">
-            <button @click="logout">{{ isLogined ? '注销登录' : '未登录'}}</button>
+            <button @click="logout">{{ $store.state.isLogined ? '注销登录' : '未登录'}}</button>
         </div>
     </div>
 </template>
@@ -29,6 +29,7 @@
     import {Home, MenuFoldOne, MenuUnfoldOne} from '@icon-park/vue-next';
     import {ref} from "vue";
     import {useRouter} from "vue-router";
+    import {useStore} from "vuex";
 
     export default {
         name: "Top",
@@ -43,8 +44,8 @@
         ],
         setup(prop, {emit}) {
             let router = useRouter()
-            let isLogined = ref(localStorage.getItem('userinfo') ? true : false)
-            let portrait = isLogined.value ? JSON.parse(localStorage.getItem('userinfo')).portrait : require('@/assets/images/portrait.jpg')
+            let store = useStore()
+            let portrait = store.isLogined ? JSON.parse(localStorage.getItem('userinfo')).portrait : require('@/assets/images/portrait.jpg')
             let iconShow = ref(false)
             let changeIconShow = () => {
                 iconShow.value = !iconShow.value
@@ -52,13 +53,13 @@
             }
             let logout = () => {
                 localStorage.clear()
-                isLogined.value = false
+                store.commit('changeLoginStatus',false)
                 router.push('/')
             }
             let changeLeftInfo =(val)=>{
                 emit('changeLeftInfo',val)
             }
-            return {iconShow, changeIconShow, logout, isLogined, portrait,changeLeftInfo}
+            return {iconShow, changeIconShow, logout, portrait,changeLeftInfo}
         }
     }
 </script>

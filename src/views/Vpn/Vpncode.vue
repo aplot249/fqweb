@@ -1,6 +1,10 @@
 <template>
     <div>
-        <h2>新用户或账号已到期续费</h2>
+        <h2>新用户或账号到期</h2>
+        <ul>
+            <li>3个月40元，半年60元，一年100元</li>
+            <li>注册码联系客服获取</li>
+        </ul>
         <input v-model="code" type="text" placeholder="填写管理员给的注册码"/>
         <button @click="onSubmit">提交</button>
     </div>
@@ -55,6 +59,10 @@
         flex-direction: column;
         h2{
             text-align: center;
+        }
+        ul{
+            color: red;
+            font-size: small;
         }
         input {
             height: 40px;
