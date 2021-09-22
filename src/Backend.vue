@@ -123,7 +123,7 @@
         @import "assets/css/pc/backend_pc";
     }
 
-    @media screen and (max-width: 1079px) {
+    @media screen and (max-width: 1080px) {
         @import "assets/css/mini/backend_mini";
     }
 

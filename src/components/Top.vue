@@ -45,8 +45,8 @@
         ],
         setup(prop, {emit}) {
             let router = useRouter()
-            let isLogined = localStorage.getItem('userinfo') ? true : false
-            let portrait = isLogined ? JSON.parse(localStorage.getItem('userinfo')).portrait : require('@/assets/images/portrait.jpg')
+            let isLogined = ref(localStorage.getItem('userinfo') ? true : false)
+            let portrait = isLogined.value ? JSON.parse(localStorage.getItem('userinfo')).portrait : require('@/assets/images/portrait.jpg')
             let iconShow = ref(false)
             let changeIconShow = () => {
                 iconShow.value = !iconShow.value
@@ -54,6 +54,7 @@
             }
             let logout = () => {
                 localStorage.clear()
+                isLogined.value = false
                 router.push('/')
             }
             return {iconShow, changeIconShow, logout, isLogined, portrait}

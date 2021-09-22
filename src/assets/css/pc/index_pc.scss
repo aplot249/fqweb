@@ -16,23 +16,19 @@
     .left {
       flex: 3;
 
-      div {
-        display: flex;
-        justify-content: center;
-
-        img {
-          width: 250px;
-          height: 250px;
-        }
+      img {
+        display: block;
+        margin: auto;
+        width: 250px;
+        height: 250px;
       }
 
       ul {
-        position: relative;
-
+        margin: 0;
         li {
           text-align: center;
           list-style: none;
-          margin: 35px;
+          margin-bottom: 30px;
           font-size: 25px;
           font-weight: bolder;
           color: #8d4bbb;
@@ -47,11 +43,11 @@
       align-items: center;
 
       .form {
-        width: 70%;
+        width: 70%; //form占据右侧窗栏的70%宽度
         padding: 20px;
         background: url("assets/images/form.png");
         background-size: cover;
-        border-radius: 10px;
+        border-radius: 30px;
 
         h2 {
           text-align: center;
@@ -82,7 +78,7 @@
             flex-direction: row;
 
             span {
-              width: 30%;
+              width: 25%;
               line-height: 40px;
               font-weight: bolder;
             }
@@ -94,7 +90,7 @@
 
             .img-verify {
               margin-left: 5px;
-              //width: 60%;
+              //width: 45%;
             }
           }
 

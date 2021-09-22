@@ -3,14 +3,17 @@
         <top/>
         <div class="middle">
             <div class="left">
-                <div>
-                    <img src="@/assets/images/slogo.png" alt="slogo图片">
-                </div>
+                <img src="@/assets/images/slogo.png" alt="slogo图片">
                 <ul>
                     <li>主要为交换生、留学生提供外网服务</li>
                     <li>提供多种穿透方式和多个节点可以选择</li>
                     <li>支持手机、电脑（Windows、Mabook）同时使用</li>
                 </ul>
+<!--                <ul>-->
+<!--                    <li>3个月30元</li>-->
+<!--                    <li>半年60元</li>-->
+<!--                    <li>一年100元</li>-->
+<!--                </ul>-->
             </div>
             <div class="right">
                 <UserRegister v-if="status == 'register'" @changeStatus="changeStatus" :initiator="initiator"></UserRegister>
@@ -38,9 +41,9 @@
 
     import {ref, onMounted} from "vue";
     import {useRoute} from "vue-router";
+    import { decode } from 'js-base64';
     import {get,post} from "@/network";
 
-    import { decode } from 'js-base64';
 
     export default {
         name: "Index",
@@ -59,9 +62,18 @@
             let reservedEmail = ref('')
             let status = ref('login')
             let tryFindEmail = ()=>{
+                if(!/\w+@(qq|163).com/.test(reservedEmail.value)){
+                    alert("邮箱格式不符")
+                    return;
+                }
                 post('/user/forgetpasswd/',{'email':reservedEmail.value}).then(
                     res=>{
+                        ModalShow.value = false
                         alert("已向你邮箱发送重置密码的确认链接，请登录邮箱点击链接，进行重置密码")
+                    },
+                    err=>{
+                        ModalShow.value = false
+                        alert("该邮箱号不存在")
                     }
                 )
             }
@@ -72,29 +84,52 @@
                 status.value = val
             }
             onMounted(() => {
-                // console.log('进入index组件，形参：',route.query)
-                //用户激活链接
-                if (/active/.test(route.fullPath)) {
-                    get(`/user/active/${route.query.active}`).then(
-                        res => {
-                            if (res.data.detail != "邮箱已激活，可以登录。") {
-                                alert("激活失败")
-                            } else {
-                                alert("激活成功，可以登录")
+                switch (Object.keys(route.query)[0]) {
+                    case 'active': //用户激活链接
+                        get(`/user/active/${route.query.active}`).then(
+                            res => {
+                                if (res.data.detail != "邮箱已激活，可以登录。") {
+                                    alert("激活失败")
+                                } else {
+                                    alert("激活成功，可以登录")
+                                }
                             }
-                        }
-                    )
+                        )
+                        break;
+                    case 'share': //邀请注册链接
+                        // console.log(decode(route.query.share))
+                        initiator.value = decode(route.query.share)
+                        status.value = 'register'
+                        break;
+                    case 'reset': // 重置密码
+                        status.value = 'reset'
+                        break;
+                    default:
+                        // console.log('没有参数')
                 }
-                //邀请注册链接
-                if (/share/.test(route.fullPath)) {
-                    console.log(decode(route.query.share))
-                    initiator.value = decode(route.query.share)
-                    status.value = 'register'
-                }
-                // 重置密码
-                if(/reset/.test(route.fullPath)){
-                    status.value = 'reset'
-                }
+                // console.log('进入index组件，形参：',route.query)
+                // //用户激活链接
+                // if (/active/.test(route.fullPath)) {
+                //     get(`/user/active/${route.query.active}`).then(
+                //         res => {
+                //             if (res.data.detail != "邮箱已激活，可以登录。") {
+                //                 alert("激活失败")
+                //             } else {
+                //                 alert("激活成功，可以登录")
+                //             }
+                //         }
+                //     )
+                // }
+                // //邀请注册链接
+                // if (/share/.test(route.fullPath)) {
+                //     console.log(decode(route.query.share))
+                //     initiator.value = decode(route.query.share)
+                //     status.value = 'register'
+                // }
+                // // 重置密码
+                // if(/reset/.test(route.fullPath)){
+                //     status.value = 'reset'
+                // }
             })
             return {status, changeStatus, initiator,ModalShow,changeModalShow,reservedEmail,tryFindEmail}
         }
@@ -106,7 +141,7 @@
         @import "assets/css/pc/index_pc";
     }
 
-    @media screen and (max-width: 1079px) {
+    @media screen and (max-width: 1080px) {
         @import "assets/css/mini/index_mini";
     }
 
