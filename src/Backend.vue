@@ -119,11 +119,11 @@
 </script>
 
 <style lang="scss">
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 1080px) {
         @import "assets/css/pc/backend_pc";
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1079px) {
         @import "assets/css/mini/backend_mini";
     }
 

@@ -54,7 +54,7 @@
         },
         setup() {
             let route = useRoute()
-            let initiator = ref(null)
+            let initiator = ref('')
             let ModalShow = ref(false)
             let reservedEmail = ref('')
             let status = ref('login')
@@ -72,10 +72,10 @@
                 status.value = val
             }
             onMounted(() => {
-                console.log(route.query)
+                // console.log('进入index组件，形参：',route.query)
                 //用户激活链接
-                if (new RegExp('login').test(route.fullPath)) {
-                    get(`/user/active/${route.query.login}`).then(
+                if (/active/.test(route.fullPath)) {
+                    get(`/user/active/${route.query.active}`).then(
                         res => {
                             if (res.data.detail != "邮箱已激活，可以登录。") {
                                 alert("激活失败")
@@ -86,12 +86,13 @@
                     )
                 }
                 //邀请注册链接
-                if (new RegExp('share').test(route.fullPath)) {
+                if (/share/.test(route.fullPath)) {
                     console.log(decode(route.query.share))
                     initiator.value = decode(route.query.share)
+                    status.value = 'register'
                 }
                 // 重置密码
-                if(new RegExp('reset').test(route.fullPath)){
+                if(/reset/.test(route.fullPath)){
                     status.value = 'reset'
                 }
             })
@@ -101,11 +102,11 @@
 </script>
 
 <style lang="scss">
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 1080px) {
         @import "assets/css/pc/index_pc";
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1079px) {
         @import "assets/css/mini/index_mini";
     }
 
