@@ -21,7 +21,7 @@
 
 <script>
     import {ref, onMounted} from "vue";
-    import {patch, post} from "@/network";
+    import {patch, post, get} from "@/network";
     import {useRouter} from "vue-router";
 
     export default {
