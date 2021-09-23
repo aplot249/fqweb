@@ -99,9 +99,7 @@
             // 既然菜单点击按钮只在移动端才显示，pc不显示，那么下面给他绑定的事件就只在移动端起作用
             let showMenu = ref(false)
             let VpnArticles = ref([])
-            let changeMenu = () => {
-                showMenu.value = !showMenu.value
-            }
+            let changeMenu = () => showMenu.value = !showMenu.value
             let getVpnArticle = ()=>{
                 get('/article/article/?tag=Vpn&type=anyconnect').then(
                     res=>{

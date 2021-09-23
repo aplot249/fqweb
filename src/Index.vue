@@ -9,25 +9,20 @@
                         <li>主要为交换生、留学生提供外网服务</li>
                         <li>提供多种穿透方式和多个节点可供选择</li>
                         <li>3个月40元，半年60元，一年100元</li>
-                        <li>安卓、苹果、Windows、Mabook 均可使用，不限流量</li>
+                        <li>安卓、苹果、Windows、Macbook均可使用，不限流量</li>
                     </ul>
                 </template>
                 <template v-if="leftInfo == 'service'">
                     <img src="@/assets/images/slogo.png" alt="slogo图片">
                     <ul>
                         <li>客服微信：aplot249</li>
-<!--                        <li>提供多种穿透方式和多个节点可以选择</li>-->
-<!--                        <li>支持手机、电脑（Windows、Mabook）同时使用</li>-->
                     </ul>
                 </template>
             </div>
             <div class="right">
-                <UserRegister v-if="status == 'register'" @changeStatus="changeStatus"
-                              :initiator="initiator"></UserRegister>
-                <UserLogin v-else-if="status == 'login'" @changeStatus="changeStatus"
-                           @changeModalShow="changeModalShow"></UserLogin>
-                <UserPasswdReset v-else-if="status == 'reset'" @changeStatus="changeStatus"
-                                 :code="this.$route.query.reset"></UserPasswdReset>
+                <UserRegister v-if="status == 'register'" @changeStatus="changeStatus" :initiator="initiator"></UserRegister>
+                <UserLogin v-else-if="status == 'login'" @changeStatus="changeStatus" @changeModalShow="changeModalShow"></UserLogin>
+                <UserPasswdReset v-else-if="status == 'reset'" @changeStatus="changeStatus" :code="this.$route.query.reset"></UserPasswdReset>
             </div>
             <div class="modalDiv" v-if="ModalShow">
                 <p>输入邮箱：</p>
