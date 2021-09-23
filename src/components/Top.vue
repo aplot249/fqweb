@@ -4,8 +4,8 @@
             <img src="@/assets/images/logo.png" alt="logo">
         </div>
         <div class="icon" @click="changeIconShow">
-            <menu-fold-one theme="outline" size="36" fill="#333" v-if="iconShow"/>
-            <menu-unfold-one theme="outline" size="36" fill="#333" v-if="!iconShow"/>
+            <menu-fold-one theme="outline" size="38" fill="#333" v-if="iconShow"/>
+            <menu-unfold-one theme="outline" size="38" fill="#333" v-if="!iconShow"/>
         </div>
         <ul>
             <li>
@@ -14,9 +14,9 @@
             <li>
                 <router-link to="/backend">操作指导</router-link>
             </li>
-<!--            <li>-->
-<!--                <a href="javascript:void(0)" @click="changeLeftInfo('service')">联系客服</a>-->
-<!--            </li>-->
+            <!--            <li>-->
+            <!--                <a href="javascript:void(0)" @click="changeLeftInfo('service')">联系客服</a>-->
+            <!--            </li>-->
         </ul>
         <div id="portrait">
             <img :src="portrait ? portrait : require('@/assets/images/portrait.jpg')" alt="头像">
@@ -53,13 +53,13 @@
             }
             let logout = () => {
                 localStorage.clear()
-                store.commit('changeLoginStatus',false)
+                store.commit('changeLoginStatus', false)
                 router.push('/')
             }
-            let changeLeftInfo =(val)=>{
-                emit('changeLeftInfo',val)
+            let changeLeftInfo = (val) => {
+                emit('changeLeftInfo', val)
             }
-            return {iconShow, changeIconShow, logout, portrait,changeLeftInfo}
+            return {iconShow, changeIconShow, logout, portrait, changeLeftInfo}
         }
     }
 </script>
@@ -77,6 +77,12 @@
             img {
                 height: 100%;
             }
+        }
+
+        .icon{
+            position: relative;
+            top: 5px;
+            right: 3px;
         }
 
         ul {

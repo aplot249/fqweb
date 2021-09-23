@@ -17,12 +17,6 @@
 
     export default {
         components: {},
-        props: {
-            barIsshow: {
-                type: Boolean,
-                default: true
-            }
-        },
         emits: ['changestatus'],
         setup(props, {emit}) {
             const store = useStore()

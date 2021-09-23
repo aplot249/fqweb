@@ -34,7 +34,7 @@
                             // console.log(results[i])
                             results[i]['content'] = names[i]
                         }
-                        softwares.value = res.data.res
+                        softwares.value = results
                     }
                 )
             }
@@ -69,7 +69,8 @@
 
             tr {
                 height: 40px;
-                th,td {
+
+                th, td {
                     border: 1px solid;
                     text-align: center;
                 }

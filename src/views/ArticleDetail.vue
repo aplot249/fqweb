@@ -31,7 +31,7 @@
             }
             onMounted(() => {
                 divScroll.value.addEventListener('scroll', function () {
-                    if(this.scrollTop > 1000) {
+                    if (this.scrollTop > 1000) {
                         goTopShow.value = true
                     } else {
                         goTopShow.value = false

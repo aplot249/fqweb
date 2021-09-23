@@ -1,10 +1,6 @@
 <template>
-    <vpn-code v-if="status=='info'" @changestatus="changestatus"/>
-    <vpn-info v-else-if="status=='code'"/>
-    <!--    <div>-->
-    <!--        <button @click="$router.push('/list/vpn')"> 查看教程 </button>-->
-    <!--        <button @click="$router.push('/vpnsoftware')"> 安装软件 </button>-->
-    <!--    </div>-->
+    <vpn-code v-if="status=='code'" @changestatus="changestatus"/>
+    <vpn-info v-else-if="status=='info'"/>
 </template>
 
 <script>
@@ -25,7 +21,7 @@
                 // Dialog.alert({ message: '你的账号已过期，如需继续使用请填写注册码', theme: 'round-button',}).then(() => {})
                 status.value = 'code'
             }
-            let newonetip = () => {
+            let newertip = () => {
                 // Dialog.alert({ message: '新用户初次使用，请填写注册码', theme: 'round-button',}).then(() => {})
                 status.value = 'code'
             }
@@ -36,7 +32,7 @@
                     // res => console.log(res.data.detail),
                     res => res.data.detail ? expiredtip() : status.value = 'info',
                     // err => console.log(err.response.data.detail),
-                    err => newonetip() //新注册的，还没有账号，转为填注册码
+                    err => newertip() //新注册的，还没有账号，转为填注册码
                 )
             })
             return {status, changestatus}

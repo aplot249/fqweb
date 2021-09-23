@@ -8,7 +8,7 @@
         <div>
             您的邀请链接为：
             <p style="font-weight: bolder">http://chuanyun101.com/?share={{initiator}}</p>
-            <p v-if="invitee.length">你目前已邀请{{invitee.length}}人，共获取奖励天数{{15*invitee.length}}天，邀请的人员名单如下：</p>
+            <p v-if="invitee.length">你目前已邀请{{invitee.length}}人，共获得奖励天数{{15*invitee.length}}天，邀请名单如下：</p>
             <p v-if="!invitee.length">你还没有邀请人哦~，快起邀请把！</p>
         </div>
         <!--        <ul v-if="invitee.length">-->

@@ -83,6 +83,7 @@
                     if (count === 0) {
                         getAllData()
                         isdisabled.value = false
+                        vxlink.value = ''
                         btnText.value = "提交"
                         clearInterval(sid)
                     } else {

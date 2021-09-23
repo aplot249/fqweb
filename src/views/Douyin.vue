@@ -71,6 +71,7 @@
                 post("/others/douyin/", {'vx_share_link': douyin.value}).then(
                     res => {
                         console.log(res.data)
+                        douyin.value = ''
                     }
                 )
                 let count = 30

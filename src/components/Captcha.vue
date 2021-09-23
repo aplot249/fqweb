@@ -10,7 +10,7 @@ export default {
   setup() {
     const verify = ref(null)
     const state = reactive({
-      pool: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890', // 字符串
+      pool: 'ABCDEFGHJKLMNPQRSTUVWXYZ123456789', // 字符串
       width: 120,
       height: 40,
       imgCode: ''
