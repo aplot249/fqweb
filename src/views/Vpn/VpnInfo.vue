@@ -76,7 +76,7 @@
                 // console.log(checked.value,next,pre)
                 console.log(next)
                 if (next != -1) {
-                    // console.log(next, pre)
+                    console.log(next)
                     // let new_domain = info.select_tmp[next]['tmp_domain']
                     // console.log(new_domain)
                     patch("/vpn/item/", {'domain': next}).then(

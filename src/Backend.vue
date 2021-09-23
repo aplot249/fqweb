@@ -52,7 +52,7 @@
                     </li>
                 </ul>
                 <div class="title">
-                    <span>其他工具</span>
+                    <span>其他功能</span>
                     <more-four theme="outline" size="24" fill="#333" strokeLinejoin="miter" strokeLinecap="butt"/>
                 </div>
                 <ul>
