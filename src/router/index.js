@@ -96,6 +96,10 @@ const routes = [
                 }
             },
         ]
+    },
+    {
+        path: '/:pathAll(.*)*',
+        redirect: '/'
     }
 ]
 
@@ -110,8 +114,15 @@ router.beforeEach((to, from, next) => {
         alert("请先登录，没有账号请注册")
         return next('/')
     } else {
-        next()
+        // console.log(Object.keys(to.query)[0])
+        console.log(!['share', 'reset', 'active'].includes(Object.keys(to.query)[0]))
+        if (store.state.isLogined === true && to.path === '/' && !['share', 'reset', 'active'].includes(Object.keys(to.query)[0])) {
+            return next('/backend')
+        } else {
+            return next()
+        }
     }
+
 })
 
 export default router
