@@ -82,7 +82,7 @@
         .icon{
             position: relative;
             top: 5px;
-            right: 3px;
+            right: 5px;
         }
 
         ul {
