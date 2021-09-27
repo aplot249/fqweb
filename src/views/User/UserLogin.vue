@@ -49,6 +49,10 @@
                 emit('changeModalShow')
             }
             let btnClick = () => {
+                if (verifyRef.value.imgCode.toLowerCase() !== loginInfo.verify.toLowerCase()) {
+                    alert("验证码错误")
+                    return;
+                }
                 if (!/[0-9a-zA-Z_]{3,15}/.test(loginInfo.username)) {
                     alert("用户名格式不符")
                     return;
@@ -75,7 +79,7 @@
                     }
                 )
             }
-            return {loginInfo, btnClick,changeModalShow}
+            return {loginInfo, btnClick,changeModalShow,verifyRef}
         }
     }
 </script>

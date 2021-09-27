@@ -33,12 +33,14 @@
         </div>
         <bottom/>
     </div>
+    <loading v-if="$store.state.isShowLoading"></loading>
 </template>
 
 <script>
     import {CloseOne} from '@icon-park/vue-next';
     import Top from "@/components/Top";
     import Bottom from "@/components/Bottom";
+    import Loading from "@/components/Loading"
     import UserRegister from "@/views/User/UserRegister";
     import UserLogin from "@/views/User/UserLogin";
     import UserPasswdReset from "@/views/User/UserPasswdReset";
@@ -54,6 +56,7 @@
             CloseOne,
             Top,
             Bottom,
+            Loading,
             UserRegister,
             UserLogin,
             UserPasswdReset
@@ -65,6 +68,7 @@
             let reservedEmail = ref('')
             let status = ref('login')
             let leftInfo = ref('price')
+            let loadingshow = ref(false)
             let tryFindEmail = () => {
                 if (!/\w+@(qq|163).com/.test(reservedEmail.value)) {
                     alert("邮箱格式不符")
@@ -115,7 +119,11 @@
                     // console.log('没有参数')
                 }
             })
-            return {status, changeStatus, initiator, ModalShow, changeModalShow, reservedEmail, tryFindEmail, leftInfo,changeLeftInfo}
+            return {
+                status, changeStatus, initiator, ModalShow,
+                changeModalShow, reservedEmail, tryFindEmail,
+                leftInfo,changeLeftInfo,loadingshow
+            }
         }
     }
 </script>

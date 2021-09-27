@@ -11,9 +11,6 @@
             <p v-if="invitee.length">你目前已邀请{{invitee.length}}人，共获得奖励天数{{15*invitee.length}}天，邀请名单如下：</p>
             <p v-if="!invitee.length">你还没有邀请人哦~，快起邀请把！</p>
         </div>
-        <!--        <ul v-if="invitee.length">-->
-        <!--            <li v-for="(item,index) in invitee" style="font-size: large">{{item.invitee}}</li>-->
-        <!--        </ul>-->
         <table>
             <tr>
                 <th>邀请时间</th>
@@ -79,7 +76,6 @@
 
         table {
             margin: auto;
-            /*border: 1px solid;*/
             tr {
                 text-align: center;
                 td,th{

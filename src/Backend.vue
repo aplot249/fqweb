@@ -73,11 +73,14 @@
         </div>
         <bottom/>
     </div>
+    <loading v-if="$store.state.isShowLoading"></loading>
 </template>
 
 <script>
     import Top from "@/components/Top";
     import Bottom from "@/components/Bottom";
+    import Loading from "@/components/Loading"
+    import Loading1 from "@/components/Loading1"
     import {Send, Avatar, MoreFour, Download, AlignTextBothOne} from '@icon-park/vue-next';
     import {PullDown} from "@/assets/js/PullDown";
     import {ref, onMounted} from "vue";
@@ -89,6 +92,8 @@
             AlignTextBothOne,
             Send,
             Bottom,
+            Loading,
+            // Loading1
             Avatar,
             MoreFour,
             Download

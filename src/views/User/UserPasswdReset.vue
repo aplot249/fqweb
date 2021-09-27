@@ -34,7 +34,6 @@
         ],
         setup(prop, {emit}) {
             const verifyRef = ref(null)
-            const store = useStore()
             let router = useRouter()
             let route = useRoute()
             let Info = reactive({

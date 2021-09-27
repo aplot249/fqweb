@@ -43,7 +43,7 @@
             let currentPage = ref(1)
             let pageMaxNum = ref()
             let refresh = () => {
-                // getAllData()
+                getAllData()
                 currentPage.value = 1
             }
             let pageBefore = ()=>{
@@ -105,7 +105,7 @@
                 getAllData()
             })
             watch(currentPage,(next,pre)=>{
-                getAllData(currentPage)
+                getAllData(currentPage.value)
             })
             return {douyin, douyinList, btnSubmit, refresh, isdisabled, btnText,pageBefore,pageNext}
         }

@@ -13,6 +13,8 @@
 <script>
     import {useRoute, onBeforeRouteUpdate} from "vue-router";
     import {ref, onMounted, reactive, toRefs} from "vue";
+    import {useStore} from "vuex";
+
     import {get} from "@/network";
 
     export default {

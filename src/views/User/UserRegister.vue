@@ -72,6 +72,7 @@
                     alert("确认密码格式不符")
                     return;
                 }
+                store.commit('changeLoadingShow',true)
                 post("/user/create/", {
                     'username': registerInfo.username,
                     'email': registerInfo.email,
@@ -79,10 +80,12 @@
                     'initiator': props.initiator // 注册邀请发起人
                 }).then(
                     res => {
+                        store.commit('changeLoadingShow',false)
                         emit('changeStatus','login')
                         alert('注册成功，已向你填写的邮箱发送账号激活邮件，请先打开邮箱激活账号，再登录')
                     },
                     err=>{
+                        store.commit('changeLoadingShow',false)
                         alert(err.response.data['non_field_errors'][0])
                     }
                 )

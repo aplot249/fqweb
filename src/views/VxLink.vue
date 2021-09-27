@@ -18,7 +18,7 @@
             <tr>
                 <th>创建时间</th>
                 <th>文档名</th>
-                <th>浏览或下载</th>
+                <th>下载</th>
             </tr>
             <tr v-for="(item,index) in vxlinkList">
                 <td>{{item.create_time}}</td>
@@ -48,8 +48,8 @@
             let currentPage = ref(1)
             let pageMaxNum = ref()
             let refresh = () => {
+                getAllData()
                 currentPage.value = 1
-                // getAllData()
             }
             let pageBefore = ()=>{
                 if(currentPage.value > 1){
@@ -110,7 +110,7 @@
                 getAllData()
             })
             watch(currentPage,(next,pre)=>{
-                getAllData(currentPage)
+                getAllData(currentPage.value)
             })
             return {vxlink, vxlinkList, btnSubmit, refresh, isdisabled, btnText,pageBefore,pageNext}
         }
