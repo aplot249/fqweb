@@ -14,7 +14,7 @@
     import {useRoute, onBeforeRouteUpdate} from "vue-router";
     import {ref, onMounted, reactive, toRefs} from "vue";
     import {useStore} from "vuex";
-
+    import { htmlScape,htmlUnscape } from "itfenfen/src/htmlScape";
     import {get} from "@/network";
 
     export default {
@@ -43,7 +43,7 @@
                     res => {
                         console.log(res.data)
                         article.title = res.data.title
-                        article.content = res.data.content
+                        article.content = htmlUnscape(res.data.content)
                     }
                 )
             })
@@ -53,7 +53,7 @@
                     res => {
                         console.log(res.data)
                         article.title = res.data.title
-                        article.content = res.data.content
+                        article.content = htmlUnscape(res.data.content)
                     }
                 )
             })

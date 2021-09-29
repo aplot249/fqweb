@@ -14,9 +14,6 @@
             <li>
                 <router-link to="/backend">操作指导</router-link>
             </li>
-            <!--            <li>-->
-            <!--                <a href="javascript:void(0)" @click="changeLeftInfo('service')">联系客服</a>-->
-            <!--            </li>-->
         </ul>
         <div id="portrait">
             <img :src="portrait ? portrait : require('@/assets/images/portrait.jpg')" alt="头像">
