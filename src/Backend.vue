@@ -108,7 +108,7 @@
             let getVpnArticle = ()=>{
                 get('/article/article/?tag=Vpn&type=anyconnect').then(
                     res=>{
-                        VpnArticles.value = res.data.results
+                        VpnArticles.value = res.data.results.reverse()
                     }
                 )
             }
