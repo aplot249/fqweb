@@ -11,9 +11,9 @@
                     <li>
                         <router-link to="/backend/vpn">账号信息</router-link>
                     </li>
-                    <li>
-                        <router-link to="">更换翻墙方式</router-link>
-                    </li>
+<!--                    <li>-->
+<!--                        <router-link to="">更换翻墙方式</router-link>-->
+<!--                    </li>-->
                 </ul>
                 <div class="title">
                     <span>操作教程</span>
