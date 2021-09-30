@@ -8,7 +8,7 @@
             <li><span>确认密码：</span><input type="password" placeholder="再次确认密码" v-model="registerInfo.password2"></li>
             <div>
                 <span>验证码：</span>
-                <input type="text" v-model="registerInfo.verify">
+                <input type="text" v-model="registerInfo.verify" placeholder="输入验证码">
                 <vue-img-verify ref="verifyRef"/>
             </div>
         </ul>

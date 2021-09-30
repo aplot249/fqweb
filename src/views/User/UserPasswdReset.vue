@@ -42,6 +42,10 @@
                 verify: ''
             })
             let btnClick = () => {
+                if (verifyRef.value.imgCode.toLowerCase() !== Info.verify.toLowerCase()) {
+                    alert("验证码错误")
+                    return;
+                }
                 if (!/[0-9a-zA-Z_]{3,15}/.test(Info.password1)) {
                     alert("密码格式不符")
                     return;
@@ -65,7 +69,7 @@
                     }
                 )
             }
-            return {Info, btnClick}
+            return {Info, btnClick,verifyRef}
         }
     }
 </script>

@@ -1,17 +1,17 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import store from '../store'
+import store from '@/store'
 
 const Index = () => import('@/Index')
 const Backend = () => import ("@/Backend")
-const Instruction = () => import('@/views/Instruction')
+const Instruction = () => import('@/views/Others/Instruction')
 const VpnCodeOrInfo = () => import ('@/views/Vpn/VpnInfoOrCode')
-const Software = () => import ('../views/Software')
-const Vxlink = () => import('../views/VxLink')
-const Douyin = () => import('../views/Douyin')
-const ChangePasswd = () => import('../views/ChangePasswd')
-const Invitation = () => import('../views/Invitation')
-const ArticleDetail = () => import ("../views/ArticleDetail")
-const ArticleEditor = () => import ("../views/ArticleEditor")
+const Software = () => import ('@/views/Others/Software')
+const Vxlink = () => import('@/views/Others/VxLink')
+const Douyin = () => import('@/views/Others/Douyin')
+const ChangePasswd = () => import('@/views/Others/ChangePasswd')
+const Invitation = () => import('@/views/Others/Invitation')
+const ArticleDetail = () => import ("@/views/Others/ArticleDetail")
+const ArticleEditor = () => import ("@/views/Others/ArticleEditor")
 
 const routes = [
     {
@@ -29,10 +29,6 @@ const routes = [
         path: '/backend',
         name: 'backend',
         component: Backend,
-        meta: {
-            // requireAuthorized: true,
-            // requireAdmin:false
-        },
         children: [
             {
                 path: '',
@@ -54,23 +50,23 @@ const routes = [
             },
             {
                 path: 'article/:id',
-                name: 'articledetail',
+                name: 'article-detail',
                 component: ArticleDetail,
                 meta: {
                     title: "操作教程",
                     requireAuthorized: true,
                     requireAdmin: false
-                },
+                }
             },
             {
                 path: 'edit/:id([\s0-9]*)',
-                name: 'articleeditor',
+                name: 'article-editor',
                 component: ArticleEditor,
                 meta: {
                     title: "编辑",
                     requireAuthorized: true,
                     requireAdmin: true
-                },
+                }
             },
             {
                 path: 'software/:type',
@@ -143,21 +139,16 @@ router.beforeEach((to, from, next) => {
         }
         //要求登录且已经登录了
         if (to.meta.requireAuthorized && store.state.isLogined === true) {
-            // 访问首页
-            if (store.state.isLogined === true && to.path === '/' && !['share', 'reset', 'active'].includes(Object.keys(to.query)[0])) {
+            // 访问要求管理员登录的页面，却不是管理员
+            if (to.meta.requireAdmin === true && JSON.parse(localStorage.getItem('userinfo')).user != 'admin') {
                 return next('/backend/')
-            }
-            // 要求是管理员
-            if (to.meta.requireAdmin == true) {
-                if (JSON.parse(localStorage.getItem('userinfo')).user === 'admin' ? true : false) {
-                    return next()
-                } else {
-                    return next('/backend/')
-                }
             }
             return next()
         }
-        //没有要求登录
+        // 登录状态访问的是首页（to.path === '/'），且不含三个关键词
+        if (!to.meta.requireAuthorized && store.state.isLogined === true && !['share', 'reset', 'active'].includes(Object.keys(to.query)[0])) {
+            return next('/backend/')
+        }
         return next()
     }
 )

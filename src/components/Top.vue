@@ -104,7 +104,7 @@
 
                     a:hover {
                         background-color: #a1afc9;
-                        text-decoration-line: underline;
+                        text-decoration-line: none;
                     }
                 }
             }
