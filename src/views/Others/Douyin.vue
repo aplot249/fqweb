@@ -65,8 +65,8 @@
                     alert("链接不能为空")
                     return false
                 }
-                if (!/https:\/\/mp.weixin.qq.com\/s\/\w+/.test(douyin.value)) {
-                    alert("公众号文章链接错误")
+                if (!/https:\/\/v.douyin.com\/\w+/.test(douyin.value)) {
+                    alert("抖音链接错误")
                     return false
                 }
                 isdisabled.value = true

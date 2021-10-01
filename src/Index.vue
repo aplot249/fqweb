@@ -20,9 +20,12 @@
                 </template>
             </div>
             <div class="right">
-                <UserRegister v-if="status == 'register'" @changeStatus="changeStatus" :initiator="initiator"></UserRegister>
-                <UserLogin v-else-if="status == 'login'" @changeStatus="changeStatus" @changeModalShow="changeModalShow"></UserLogin>
-                <UserPasswdReset v-else-if="status == 'reset'" @changeStatus="changeStatus" :code="this.$route.query.reset"></UserPasswdReset>
+                <UserRegister v-if="status == 'register'" @changeStatus="changeStatus"
+                              :initiator="initiator"></UserRegister>
+                <UserLogin v-else-if="status == 'login'" @changeStatus="changeStatus"
+                           @changeModalShow="changeModalShow"></UserLogin>
+                <UserPasswdReset v-else-if="status == 'reset'" @changeStatus="changeStatus"
+                                 :code="this.$route.query.reset"></UserPasswdReset>
             </div>
             <div class="modalDiv" v-if="ModalShow">
                 <p>输入邮箱：</p>
@@ -45,7 +48,7 @@
     import UserLogin from "@/views/User/UserLogin";
     import UserPasswdReset from "@/views/User/UserPasswdReset";
 
-    import {ref, onMounted} from "vue";
+    import {onMounted, ref} from "vue";
     import {useRoute} from "vue-router";
     import {decode} from 'js-base64';
     import {get, post} from "@/network";
@@ -91,7 +94,7 @@
             let changeStatus = (val) => {
                 status.value = val
             }
-            let changeLeftInfo =(val)=>{
+            let changeLeftInfo = (val) => {
                 leftInfo.value = val
             }
             onMounted(() => {
@@ -122,7 +125,7 @@
             return {
                 status, changeStatus, initiator, ModalShow,
                 changeModalShow, reservedEmail, tryFindEmail,
-                leftInfo,changeLeftInfo,loadingshow
+                leftInfo, changeLeftInfo, loadingshow
             }
         }
     }

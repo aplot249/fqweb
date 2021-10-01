@@ -11,10 +11,9 @@
 </template>
 
 <script>
-    import {useRoute, onBeforeRouteUpdate} from "vue-router";
-    import {ref, onMounted, reactive, toRefs} from "vue";
-    import {useStore} from "vuex";
-    import { htmlScape,htmlUnscape } from "itfenfen/src/htmlScape";
+    import {onBeforeRouteUpdate, useRoute} from "vue-router";
+    import {onMounted, reactive, ref, toRefs} from "vue";
+    import {htmlUnscape} from "itfenfen/src/htmlScape";
     import {get} from "@/network";
 
     export default {
@@ -81,8 +80,11 @@
         }
 
         .article-content {
+            @media screen and (min-width: 1080px) {
+                margin: 0 auto;
+                width: 80%;
+            }
             overflow-y: scroll;
-            width: inherit;
             scrollbar-width: none; /* firefox */
             -ms-overflow-style: none; /* IE 10+ */
 

@@ -11,9 +11,9 @@
                     <li>
                         <router-link to="/backend/vpn">账号信息</router-link>
                     </li>
-<!--                    <li>-->
-<!--                        <router-link to="">更换翻墙方式</router-link>-->
-<!--                    </li>-->
+                    <!--                    <li>-->
+                    <!--                        <router-link to="">更换翻墙方式</router-link>-->
+                    <!--                    </li>-->
                 </ul>
                 <div class="title">
                     <span>操作教程</span>
@@ -80,11 +80,10 @@
     import Top from "@/components/Top";
     import Bottom from "@/components/Bottom";
     import Loading from "@/components/Loading"
-    import Loading1 from "@/components/Loading1"
-    import {Send, Avatar, MoreFour, Download, AlignTextBothOne} from '@icon-park/vue-next';
+    import {AlignTextBothOne, Avatar, Download, MoreFour, Send} from '@icon-park/vue-next';
     import {PullDown} from "@/assets/js/PullDown";
-    import {ref, onMounted} from "vue";
     import {get} from "@/network";
+    import {onMounted, ref} from "vue";
 
     export default {
         components: {
@@ -105,9 +104,9 @@
             let showMenu = ref(false)
             let VpnArticles = ref([])
             let changeMenu = () => showMenu.value = !showMenu.value
-            let getVpnArticle = ()=>{
+            let getVpnArticle = () => {
                 get('/article/article/?tag=Vpn&type=anyconnect').then(
-                    res=>{
+                    res => {
                         VpnArticles.value = res.data.results.reverse()
                     }
                 )
