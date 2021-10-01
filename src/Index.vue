@@ -6,8 +6,8 @@
                 <template v-if="leftInfo == 'price'">
                     <img src="@/assets/images/slogo.png" alt="slogo图片">
                     <ul>
-                        <li>主要为交换生、留学生提供外网服务</li>
-                        <li>提供多种穿透方式和多个节点可供选择</li>
+                        <li>主要为留学生提供外网服务</li>
+                        <li>提供多个节点可供选择</li>
                         <li>3个月40元，半年60元，一年100元</li>
                         <li>安卓、苹果、Windows、Macbook均可使用，不限流量</li>
                     </ul>

@@ -2,7 +2,7 @@
     <div class="form">
         <h2>用户重置密码</h2>
         <ul>
-            <li><span>密码：</span><input type="password" v-model="Info.password1" placeholder="输入密码"></li>
+            <li><span>密码：</span><input type="password" v-model="Info.password1" placeholder="仅限字母、数字（5-15位）"></li>
             <li><span>确认密码：</span><input type="password" v-model="Info.password2" placeholder="输入确认密码"></li>
             <div>
                 <span>验证码：</span>
@@ -46,11 +46,11 @@
                     alert("验证码错误")
                     return;
                 }
-                if (!/[0-9a-zA-Z_]{3,15}/.test(Info.password1)) {
+                if (!/[0-9a-zA-Z_]{5,15}/.test(Info.password1)) {
                     alert("密码格式不符")
                     return;
                 }
-                if (!/[0-9a-zA-Z]{3,15}/.test(Info.password2)) {
+                if (!/[0-9a-zA-Z]{5,15}/.test(Info.password2)) {
                     alert("确认密码格式不符")
                     return;
                 }

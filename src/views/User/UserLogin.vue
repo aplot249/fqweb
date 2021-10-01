@@ -3,7 +3,7 @@
         <h2>用户登录</h2>
         <ul>
             <li><span>用户名：</span><input type="text" v-model="loginInfo.username" placeholder="输入用户名或邮箱号"></li>
-            <li><span>密码：</span><input type="password" v-model="loginInfo.password" placeholder="输入密码"></li>
+            <li><span>密码：</span><input type="password" v-model="loginInfo.password" placeholder="密码（5-15位）"></li>
             <div>
                 <span>验证码：</span>
                 <input type="text" v-model="loginInfo.verify" placeholder="输入验证码">
@@ -53,11 +53,11 @@
                     alert("验证码错误")
                     return;
                 }
-                if (!/[0-9a-zA-Z_]{3,15}/.test(loginInfo.username)) {
+                if (!/[0-9a-zA-Z_]{5,15}/.test(loginInfo.username)) {
                     alert("用户名格式不符")
                     return;
                 }
-                if (!/[0-9a-zA-Z]{3,15}/.test(loginInfo.password)) {
+                if (!/[0-9a-zA-Z]{5,15}/.test(loginInfo.password)) {
                     alert("密码格式不符")
                     return;
                 }

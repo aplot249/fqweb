@@ -34,6 +34,7 @@
                             // console.log(results[i])
                             results[i]['content'] = names[i]
                         }
+                        console.log(results)
                         softwares.value = results
                     }
                 )
