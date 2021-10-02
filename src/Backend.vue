@@ -74,6 +74,7 @@
         <bottom/>
     </div>
     <loading v-if="$store.state.isShowLoading"></loading>
+<!--    <loading></loading>-->
 </template>
 
 <script>

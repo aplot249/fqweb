@@ -16,12 +16,12 @@
 
 <style scoped>
     .loading {
-        width: 120px;
+        /*width: 84px;*/
         height: 40px;
         margin: 0 auto;
         position: fixed;
         top: calc((100vh - 40px) / 2);
-        right: calc((100vw - 120px) / 2);
+        right: calc((100vw - 79px) / 2);
     }
 
     .loading span {
