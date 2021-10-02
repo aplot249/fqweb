@@ -12,7 +12,7 @@
                 <a href="javascript:void(0)" @click="changeLeftInfo('price')">产品价格</a>
             </li>
             <li>
-                <router-link to="/backend">操作指导</router-link>
+                <router-link to="/backend">操作指引</router-link>
             </li>
         </ul>
         <div id="portrait">

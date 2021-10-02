@@ -21,7 +21,7 @@
                 <span>剩余天数：</span><input v-model="time_remaining" type="text" name="剩余天数" disabled/>
             </li>
             <li>
-                <span>其他服务器：</span>
+                <span>更换服务器：</span>
                 <ul>
                     <li v-for="(tmp,index) in select_tmp" :key="index">
                         <label>
