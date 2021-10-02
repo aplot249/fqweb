@@ -29,7 +29,7 @@
         width: 12px;
         height: 100%;
         border-radius: 4px;
-        margin: 5px;
+        margin: 4px;
         background: lightgreen;
         -webkit-animation: load 1s ease infinite;
     }

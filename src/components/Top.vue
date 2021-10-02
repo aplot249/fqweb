@@ -63,7 +63,7 @@
 
 <style lang="scss" scoped>
     .top {
-        margin: 5px 0;
+        /*margin: 3px 0;*/
         display: flex;
         height: 50px;
         line-height: 50px;
@@ -73,6 +73,7 @@
         #logo {
             img {
                 height: 100%;
+                width: 134px;
             }
         }
 

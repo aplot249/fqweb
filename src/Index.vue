@@ -43,7 +43,7 @@
     import {CloseOne} from '@icon-park/vue-next';
     import Top from "@/components/Top";
     import Bottom from "@/components/Bottom";
-    import Loading from "@/components/Loading"
+    import Loading from "@/components/Loading1"
     import UserRegister from "@/views/User/UserRegister";
     import UserLogin from "@/views/User/UserLogin";
     import UserPasswdReset from "@/views/User/UserPasswdReset";

@@ -79,7 +79,7 @@
 <script>
     import Top from "@/components/Top";
     import Bottom from "@/components/Bottom";
-    import Loading from "@/components/Loading"
+    import Loading from "@/components/Loading1"
     import {AlignTextBothOne, Avatar, Download, MoreFour, Send} from '@icon-park/vue-next';
     import {PullDown} from "@/assets/js/PullDown";
     import {get} from "@/network";

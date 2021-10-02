@@ -103,7 +103,7 @@
             background: red;
             border-radius: 50px;
             position: fixed;
-            top: 84%;
+            bottom: 55px;
             right: 3%;
             display: block;
 
