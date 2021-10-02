@@ -63,7 +63,6 @@
 
 <style lang="scss" scoped>
     .top {
-        /*margin: 3px 0;*/
         display: flex;
         height: 50px;
         line-height: 50px;
@@ -118,6 +117,7 @@
             @media screen and (min-width: 769px) {
                 display: block;
                 img {
+                    margin-top: 2.5px; //头像img垂直居中
                     width: 45px;
                     height: 45px;
                     border-radius: 50%;

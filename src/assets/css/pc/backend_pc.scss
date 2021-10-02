@@ -4,6 +4,11 @@
   flex-direction: column;
   height: 100vh;
 
+  //去掉ul自带的左padding40px
+  ul {
+    padding-left: 0;
+  }
+
   .middle {
     flex: 1;
     display: flex;
@@ -15,8 +20,10 @@
       //background-size: cover;
       background-color: snow; //#7fecad;
       width: 50vh;
+
       .title {
-        border: 1px solid;
+        //border: 1px solid;
+        border-bottom: 1px solid;
         //margin: 10px 0;
         height: 45px;
         line-height: 45px;
@@ -34,7 +41,6 @@
 
       ul {
         margin: 0;
-        padding-left: 0;
         display: none;
 
         li {
@@ -46,16 +52,19 @@
           list-style: none;
           //padding-left: 30px;
           text-align: center;
+          font-size: small;
 
           a {
             display: block;
+            text-decoration: none;
           }
         }
 
         li:hover {
-          background-color: #8ef6e4//#3eede7;
+          background-color: #cbf1f5 //#3eede7;
         }
       }
+
     }
 
     .right {
