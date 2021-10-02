@@ -32,12 +32,12 @@
                     <li>
                         <router-link to="/backend/software/vpn">翻墙软件</router-link>
                     </li>
-                    <li>
-                        <router-link to="/backend/software/android">国外安卓软件</router-link>
-                    </li>
-                    <li>
-                        <router-link to="/backend/software/windows">Windows软件</router-link>
-                    </li>
+<!--                    <li>-->
+<!--                        <router-link to="/backend/software/android">国外安卓软件</router-link>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <router-link to="/backend/software/windows">Windows软件</router-link>-->
+<!--                    </li>-->
                 </ul>
                 <div class="title">
                     <span>用户中心</span>
