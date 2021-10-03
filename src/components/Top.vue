@@ -78,7 +78,7 @@
 
         .icon{
             position: relative;
-            top: 5px;
+            top: 6px;
             right: 5px;
         }
 

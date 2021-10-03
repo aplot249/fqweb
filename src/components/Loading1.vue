@@ -16,9 +16,8 @@
 
 <style scoped>
     .loading {
-        /*width: 84px;*/
         height: 40px;
-        margin: 0 auto;
+        margin: auto;
         position: fixed;
         top: calc((100vh - 40px) / 2);
         right: calc((100vw - 79px) / 2);
@@ -32,6 +31,18 @@
         margin: 4px;
         background: lightgreen;
         -webkit-animation: load 1s ease infinite;
+    }
+
+    @keyframes load {
+        0%, 100% {
+            height: 40px;
+            background: lightgreen;
+        }
+        50% {
+            height: 70px;
+            margin: -15px 0;
+            background: lightblue;
+        }
     }
 
     @-webkit-keyframes load {
