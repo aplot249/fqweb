@@ -3,7 +3,8 @@ import store from "@/store";
 
 const instance = axios.create({
     // baseURL: process.env.NODE_ENV == 'development' ? 'http://192.168.42.188:8000' : 'http://django.chuanyun101.com',
-    baseURL: process.env.NODE_ENV == 'development' ? 'http://127.0.0.1:8000' : 'http://django.chuanyun101.com',
+    // baseURL: process.env.NODE_ENV == 'development' ? 'http://127.0.0.1:8000' : 'http://django.chuanyun101.com',
+    baseURL: process.env.NODE_ENV == 'development' ? 'http://django.chuanyun101.com' : 'http://101.35.141.230:8885',
     // baseURL:"http://127.0.0.1:8000",
     // baseURL:"http://django.chuanyun101.com",
     // timeout:20000
@@ -33,14 +34,14 @@ instance.interceptors.response.use(
     }
 )
 
-export function get(url, params) {
+export async function get(url, params) {
     return instance.get(url, {
         params,
     })
 }
 
 
-export function post(url, data) {
+export async function post(url, data) {
     return instance.post(url, data, {
         transformRequest: [function (data) {
             let res = '';
@@ -56,7 +57,7 @@ export function post(url, data) {
     })
 }
 
-export function put(url, data) {
+export async function put(url, data) {
     return instance.put(url, data, {
         // headers:{
         //     "Authorization":localStorage.getItem("accessToken"),
@@ -65,7 +66,7 @@ export function put(url, data) {
     })
 }
 
-export function patch(url, data) {
+export async function patch(url, data) {
     return instance.patch(url, data, {
         // headers:{
         //     "Authorization":localStorage.getItem("accessToken")
@@ -73,7 +74,7 @@ export function patch(url, data) {
     })
 }
 
-export function del(url, data) {
+export async function del(url, data) {
     return instance.delete(url, data, {
         // headers:{
         //     "Authorization":localStorage.getItem("accessToken")
@@ -81,7 +82,7 @@ export function del(url, data) {
     })
 }
 
-export function upload(url, data) {
+export async function upload(url, data) {
     return instance.post(url, data, {
         headers: {
             'Content-Type': 'multipart/form-data;charset=UTF-8'
