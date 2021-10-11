@@ -18,11 +18,11 @@
         setup() {
             let status = ref()
             let expiredtip = () => {
-                // Dialog.alert({ message: '你的账号已过期，如需继续使用请填写注册码', theme: 'round-button',}).then(() => {})
+                console.log('你的账号已过期，如需继续使用请填写注册码')
                 status.value = 'code'
             }
             let newertip = () => {
-                // Dialog.alert({ message: '新用户初次使用，请填写注册码', theme: 'round-button',}).then(() => {})
+                console.log('新用户初次使用，请填写使用码')
                 status.value = 'code'
             }
             let changestatus = () => status.value = 'info'
