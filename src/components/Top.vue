@@ -14,6 +14,9 @@
             <li>
                 <router-link to="/backend">操作指引</router-link>
             </li>
+            <li>
+                <router-link to="/backend/invitation">邀请奖励</router-link>
+            </li>
         </ul>
         <div id="portrait">
             <img :src="portrait ? portrait : require('@/assets/images/portrait.jpg')" alt="头像">

@@ -45,7 +45,7 @@
                 </div>
                 <ul>
                     <li>
-                        <router-link to="/backend/invitation">宣传奖励</router-link>
+                        <router-link to="/backend/invitation">邀请奖励</router-link>
                     </li>
                     <li>
                         <router-link to="/backend/changepasswd">更改密码</router-link>
