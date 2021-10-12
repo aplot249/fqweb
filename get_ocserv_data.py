@@ -3,6 +3,7 @@ import json as jjson
 import pathlib
 from collections import Counter
 
+import aiohttp
 import sanic
 from sanic.exceptions import NotFound
 from sanic.response import empty, json
@@ -10,10 +11,17 @@ from sanic.response import empty, json
 app = sanic.Sanic(name="index")
 
 
+async def getuserip(ip):
+    async with aiohttp.request('GET', 'http://freeapi.ipip.net/' + ip, timeout=6000) as pp:
+        rrr = await pp.json()
+        print(rrr)
+        return rrr
+
+
 async def handle():
     item_list = []
     today = datetime.datetime.today().strftime('%Y-%m-%d')
-    p = pathlib.Path('./ocserv-records/' + today)
+    p = pathlib.Path('../ocserv-records/' + today)
     # p.iterdir()
     # json_list = os.listdir(p)
     for j in p.iterdir():  # json_list:
@@ -51,6 +59,7 @@ async def handle():
             # 下面2行可以打开，可以关闭
             period_list[name] = period_list.get(name, []) + [str(item_list[i]['_Connected at']).strip()]
             item_list[i]['period_list'] = period_list[name][-1]  # -1取的是最后一个时间，也就是末尾片的时间
+            item_list[i]['Remote IP'] = [item_list[i]] + await getuserip(item_list[i]['Remote IP'])
             cleaned_data[name] = item_list[i]
 
     return cleaned_data
@@ -66,9 +75,6 @@ async def index(request):
     user_count = len(set([str(username).split("#")[0] for username in cleaned_data.keys()]))
     count = len(cleaned_data.keys())
     login_detail = Counter([str(username).split("#")[0] for username in cleaned_data.keys()])
-
-    cleaned_data['user_count'] = user_count
-    cleaned_data['count'] = count
 
     return json({'user_count': user_count, 'count': count, 'login_detail': login_detail, 'detail': cleaned_data})
 
