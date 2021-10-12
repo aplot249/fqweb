@@ -59,7 +59,7 @@ async def handle():
             # 下面2行可以打开，可以关闭
             period_list[name] = period_list.get(name, []) + [str(item_list[i]['_Connected at']).strip()]
             item_list[i]['period_list'] = period_list[name][-1]  # -1取的是最后一个时间，也就是末尾片的时间
-            item_list[i]['Remote IP'] = 'http://freeapi.ipip.net/'+'item_list[i]' #[item_list[i]] + await getuserip(item_list[i]['Remote IP'])
+            item_list[i]['Remote IP'] = 'http://freeapi.ipip.net/'+str(item_list[i]) #[item_list[i]] + await getuserip(item_list[i]['Remote IP'])
             cleaned_data[name] = item_list[i]
 
     return cleaned_data
