@@ -12,7 +12,7 @@ app = sanic.Sanic(name="index")
 
 
 async def getuserip(ip):
-    async with aiohttp.request('GET', 'http://freeapi.ipip.net/' + ip, timeout=6000) as pp:
+    async with aiohttp.request('GET', 'http://freeapi.ipip.net/' + ip) as pp:
         rrr = await pp.json()
         print(rrr)
         return rrr
