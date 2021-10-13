@@ -1,10 +1,10 @@
 import datetime
 import json as jjson
 import pathlib
-import aiohttp
-import sanic
 from collections import Counter
 
+import aiohttp
+import sanic
 from sanic.exceptions import NotFound
 from sanic.response import empty, json
 
@@ -77,13 +77,12 @@ async def index(request):
     cleaned_data = await handle()
     user_count = len(set([str(username).split("#")[0] for username in cleaned_data.keys()]))
     count = len(cleaned_data.keys())
-    login_detail = Counter([str(username).split("#")[0] for username in cleaned_data.keys()])
-    # login_detail = sorted(Counter([str(username).split("#")[0] for username in cleaned_data.keys()]).items(),key=lambda x: x[1], reverse=True)
-    # login_detail = OrderedDict()
-    # for item in sorted(Counter([str(username).split("#")[0] for username in cleaned_data.keys()]).items(),key=lambda x: x[1], reverse=True):
-    #     login_detail[item[0]] = item[1]
-    # print(login_detail.items())
-    return json({'user_count': user_count, 'count': count, 'login_detail': login_detail, 'detail': cleaned_data})
+    # login_detail = Counter([str(username).split("#")[0] for username in cleaned_data.keys()])
+    login_detail = sorted(Counter([str(username).split("#")[0] for username in cleaned_data.keys()]).items(), key=lambda x: x[1], reverse=True)
+
+    detail = sorted(list(cleaned_data.values()),key=lambda x:[x["Username"],x['Connected at']])
+
+    return json({'user_count': user_count, 'count': count, 'login_detail': login_detail, 'detail': detail})
 
 
 if __name__ == "__main__":
