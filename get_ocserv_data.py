@@ -23,9 +23,12 @@ async def handle():
     today = datetime.datetime.today().strftime('%Y-%m-%d')
     p = pathlib.Path('../ocserv-records/' + today)
     for j in p.iterdir():
-        f = open(j)
-        data = jjson.load(f)
-        item_list += data
+        try:
+            f = open(j)
+            data = jjson.load(f)
+            item_list += data
+        except:
+            pass
 
     item_list.sort(key=lambda it: it['Username'])
 
