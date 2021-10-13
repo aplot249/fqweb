@@ -1,7 +1,7 @@
 import datetime
 import json as jjson
 import pathlib
-from collections import Counter
+from collections import Counter,OrderedDict
 
 import aiohttp
 import sanic
@@ -52,6 +52,7 @@ async def handle():
         # print(i, item_list[i])
         if i + 1 >= len(item_list):
             break
+        if not item_list[i]['Username']:break
         # print(item_list[i]['Username'], item_list[i + 1]['Username'])
         name = item_list[i]['Username'] + '#' + item_list[i]['Connected at']
         if item_list[i]['Username'] == item_list[i + 1]['Username'] and item_list[i]['Connected at'] == \
@@ -76,7 +77,8 @@ async def index(request):
     cleaned_data = await handle()
     user_count = len(set([str(username).split("#")[0] for username in cleaned_data.keys()]))
     count = len(cleaned_data.keys())
-    login_detail = Counter([str(username).split("#")[0] for username in cleaned_data.keys()])
+    # login_detail = Counter([str(username).split("#")[0] for username in cleaned_data.keys()])
+    login_detail = sorted(Counter([str(username).split("#")[0] for username in cleaned_data.keys()]).items(),key=lambda x:x[1],reverse=True)
 
     return json({'user_count': user_count, 'count': count, 'login_detail': login_detail, 'detail': cleaned_data})
 
