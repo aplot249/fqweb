@@ -1,10 +1,10 @@
 import datetime
 import json as jjson
 import pathlib
-from collections import Counter,OrderedDict
-
 import aiohttp
 import sanic
+from collections import Counter
+
 from sanic.exceptions import NotFound
 from sanic.response import empty, json
 
@@ -22,11 +22,7 @@ async def handle():
     item_list = []
     today = datetime.datetime.today().strftime('%Y-%m-%d')
     p = pathlib.Path('../ocserv-records/' + today)
-    # p.iterdir()
-    # json_list = os.listdir(p)
-    for j in p.iterdir():  # json_list:
-        # f = await aiofiles.open(p.joinpath(j))
-        # f = open(p.joinpath(j))
+    for j in p.iterdir():
         f = open(j)
         data = jjson.load(f)
         item_list += data
@@ -52,7 +48,7 @@ async def handle():
         # print(i, item_list[i])
         if i + 1 >= len(item_list):
             break
-        if not item_list[i]['Username']:break
+        if item_list[i]['Username'] == "(none)": continue
         # print(item_list[i]['Username'], item_list[i + 1]['Username'])
         name = item_list[i]['Username'] + '#' + item_list[i]['Connected at']
         if item_list[i]['Username'] == item_list[i + 1]['Username'] and item_list[i]['Connected at'] == \
@@ -61,7 +57,8 @@ async def handle():
             period_list[name] = period_list.get(name, []) + [str(item_list[i]['_Connected at']).strip()]
             item_list[i]['period_list'] = period_list[name][-1]  # -1取的是最后一个时间，也就是末尾片的时间
             # item_list[i]['Remote IP'] = 'http://freeapi.ipip.net/'+str(item_list[i]['Remote IP']) #[item_list[i]] + await getuserip(item_list[i]['Remote IP'])
-            item_list[i]['Remote IP'] = 'https://whois.pconline.com.cn/ipJson.jsp?ip={0}&json=true'.format(str(item_list[i]['Remote IP']))  # [item_list[i]] + await getuserip(item_list[i]['Remote IP'])
+            item_list[i]['Remote IP'] = 'https://whois.pconline.com.cn/ipJson.jsp?ip={0}&json=true'.format(
+                str(item_list[i]['Remote IP']))  # [item_list[i]] + await getuserip(item_list[i]['Remote IP'])
 
             cleaned_data[name] = item_list[i]
 
@@ -77,9 +74,12 @@ async def index(request):
     cleaned_data = await handle()
     user_count = len(set([str(username).split("#")[0] for username in cleaned_data.keys()]))
     count = len(cleaned_data.keys())
-    # login_detail = Counter([str(username).split("#")[0] for username in cleaned_data.keys()])
-    login_detail = sorted(Counter([str(username).split("#")[0] for username in cleaned_data.keys()]).items(),key=lambda x:x[1],reverse=True)
-
+    login_detail = Counter([str(username).split("#")[0] for username in cleaned_data.keys()])
+    # login_detail = sorted(Counter([str(username).split("#")[0] for username in cleaned_data.keys()]).items(),key=lambda x: x[1], reverse=True)
+    # login_detail = OrderedDict()
+    # for item in sorted(Counter([str(username).split("#")[0] for username in cleaned_data.keys()]).items(),key=lambda x: x[1], reverse=True):
+    #     login_detail[item[0]] = item[1]
+    # print(login_detail.items())
     return json({'user_count': user_count, 'count': count, 'login_detail': login_detail, 'detail': cleaned_data})
 
 
