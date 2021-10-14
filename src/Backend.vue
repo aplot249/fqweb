@@ -11,9 +11,9 @@
                     <li>
                         <router-link to="/backend/vpn">账号信息</router-link>
                     </li>
-                    <!--                    <li>-->
-                    <!--                        <router-link to="">更换翻墙方式</router-link>-->
-                    <!--                    </li>-->
+                    <li v-if="username=='admin'">
+                        <router-link to="/backend/analysis">统计数据</router-link>
+                    </li>
                 </ul>
                 <div class="title">
                     <span>操作教程</span>
@@ -104,6 +104,7 @@
             // 既然菜单点击按钮只在移动端才显示，pc不显示，那么下面给他绑定的事件就只在移动端起作用
             let showMenu = ref(false)
             let VpnArticles = ref([])
+            let username = JSON.parse(localStorage.getItem('userinfo'))['user']
             let changeMenu = () => showMenu.value = !showMenu.value
             let getVpnArticle = () => {
                 get('/article/article/?tag=Vpn&type=anyconnect').then(
@@ -116,7 +117,7 @@
                 new PullDown("left")
                 getVpnArticle()
             })
-            return {showMenu, VpnArticles, changeMenu}
+            return {showMenu, VpnArticles, changeMenu,username}
         }
     }
 </script>

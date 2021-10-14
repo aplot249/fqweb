@@ -12,6 +12,7 @@ const ChangePasswd = () => import('@/views/Others/ChangePasswd')
 const Invitation = () => import('@/views/Others/Invitation')
 const ArticleDetail = () => import ("@/views/Others/ArticleDetail")
 const ArticleEditor = () => import ("@/views/Others/ArticleEditor")
+const Analysis = ()=> import("@/views/Vpn/Analysis")
 
 const routes = [
     {
@@ -44,6 +45,15 @@ const routes = [
                 component: VpnCodeOrInfo,
                 meta: {
                     title: "翻墙操作",
+                    requireAuthorized: true,
+                    requireAdmin: false
+                }
+            },
+            {
+                path: 'analysis',
+                component: Analysis,
+                meta: {
+                    title: "数据分析",
                     requireAuthorized: true,
                     requireAdmin: false
                 }
