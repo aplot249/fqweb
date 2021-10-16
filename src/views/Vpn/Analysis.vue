@@ -105,9 +105,5 @@
         flex-direction: column;
         width: 100%;
         height: 80%;
-
-        /*h2 {*/
-        /*    text-align: center;*/
-        /*}*/
     }
 </style>
