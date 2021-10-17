@@ -20,12 +20,16 @@
             <li>
                 <span>剩余天数：</span><input v-model="time_remaining" type="text" name="剩余天数" disabled/>
             </li>
+<!--        </ul>-->
+<!--        <h2>更换服务器</h2>-->
+<!--        <ul>-->
             <li>
                 <span>更换服务器：</span>
                 <ul>
                     <li v-for="(tmp,index) in select_tmp" :key="index">
                         <label>
                             <span>{{tmp['proxy'] ? tmp['proxy'] : tmp['tmp_domain']}}</span>
+                            <span>{{tmp['go_abroad']=='0' ? '':'回国线路'}}</span>
                             <input type="radio" :value="tmp['tmp_domain']" v-model="checked"/>
                         </label>
                     </li>
