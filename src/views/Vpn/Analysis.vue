@@ -19,7 +19,7 @@
 
             let getData = () => {
                 store.commit('changeLoadingShow', true)
-                axios.get('http://a1.chuanyun101.com:8008/listday').then(
+                axios.get('http://ocserv.chuanyun101.com/listday').then(
                     res => {
                         oneChartData.riqi_list = res.data['riqi_list']
                         oneChartData.user_count_list = res.data['user_count_list']

@@ -29,7 +29,7 @@
                     <li v-for="(tmp,index) in select_tmp" :key="index">
                         <label>
                             <span>{{tmp['proxy'] ? tmp['proxy'] : tmp['tmp_domain']}}</span>
-                            <span>{{tmp['go_abroad']=='0' ? '':'回国线路'}}</span>
+<!--                            <span>{{tmp['go_abroad']=='0' ? '':'回国线路'}}</span>-->
                             <input type="radio" :value="tmp['tmp_domain']" v-model="checked"/>
                         </label>
                     </li>
