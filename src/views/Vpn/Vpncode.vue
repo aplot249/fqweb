@@ -25,7 +25,7 @@
                 post("/vpn/code/", {"code": code.value}).then(
                     res => {
                         if (res.data['detail'] == "处理成功") {
-                            console.log("处理成功！")
+                            // console.log("处理成功！")
                             setTimeout(() => {
                                 emit('changestatus')
                             }, 1000)

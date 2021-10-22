@@ -4,13 +4,16 @@
             <img src="@/assets/images/logo.png" alt="logo">
         </div>
         <div class="icon" @click="changeIconShow">
-            <menu-fold-one theme="outline" size="38" fill="#333" v-if="iconShow"/>
-            <menu-unfold-one theme="outline" size="38" fill="#333" v-if="!iconShow"/>
+            <!--            <menu-fold-one theme="outline" size="38" fill="#333" v-if="!iconShow"/>-->
+            <!--            <menu-unfold-one theme="outline" size="38" fill="#333" v-if="iconShow"/>-->
+            <application-menu theme="outline" size="38" fill="#333" strokeLinejoin="miter" strokeLinecap="butt"
+                              v-if="!iconShow"/>
+            <close theme="outline" size="38" fill="#333" strokeLinejoin="miter" strokeLinecap="butt" v-if="iconShow"/>
         </div>
         <ul>
-            <li>
-                <a href="javascript:void(0)" @click="changeLeftInfo('price')">产品价格</a>
-            </li>
+            <!--            <li>-->
+            <!--                <a href="javascript:void(0)" @click="changeLeftInfo('price')">产品价格</a>-->
+            <!--            </li>-->
             <li>
                 <router-link to="/backend">操作指引</router-link>
             </li>
@@ -26,7 +29,8 @@
 </template>
 
 <script>
-    import {Home, MenuFoldOne, MenuUnfoldOne} from '@icon-park/vue-next';
+    // import {Home, MenuFoldOne, MenuUnfoldOne,Logout,ApplicationMenu,Close} from '@icon-park/vue-next';
+    import {ApplicationMenu, Close} from '@icon-park/vue-next';
     import {ref} from "vue";
     import {useRouter} from "vue-router";
     import {useStore} from "vuex";
@@ -34,9 +38,12 @@
     export default {
         name: "Top",
         components: {
-            Home,
-            MenuFoldOne,
-            MenuUnfoldOne
+            // Home,
+            // MenuFoldOne,
+            // MenuUnfoldOne,
+            // Logout,
+            ApplicationMenu,
+            Close
         },
         emits: [
             'changeMenu',
@@ -79,7 +86,7 @@
             }
         }
 
-        .icon{
+        .icon {
             position: relative;
             top: 6px;
             right: 5px;
