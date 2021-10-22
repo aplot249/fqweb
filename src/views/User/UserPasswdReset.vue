@@ -3,7 +3,7 @@
         <h2>用户重置密码</h2>
         <ul>
             <li><span>密码：</span><input type="password" v-model="Info.password1" placeholder="仅限字母、数字（5-15位）"></li>
-            <li><span>确认密码：</span><input type="password" v-model="Info.password2" placeholder="输入确认密码"></li>
+            <li><span>确认密码：</span><input type="password" v-model="Info.password2" placeholder="再次确认密码"></li>
             <div>
                 <span>验证码：</span>
                 <input type="text" v-model="Info.verify" placeholder="输入验证码">

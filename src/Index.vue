@@ -80,7 +80,7 @@
                 post('/user/forgetpasswd/', {'email': reservedEmail.value}).then(
                     res => {
                         ModalShow.value = false
-                        alert("已向你邮箱发送重置密码的确认链接，请登录邮箱点击链接，进行重置密码")
+                        alert("已向你邮箱发送重置密码的链接，请登录邮箱点击链接，进行重置密码")
                     },
                     err => {
                         ModalShow.value = false
