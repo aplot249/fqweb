@@ -8,7 +8,12 @@
             </tr>
             <tr v-for="(item,index) in softwares" :key="index">
                 <td>{{ item.content}}</td>
-                <td><a :href="item.href" target="_blank">点我下载</a></td>
+                <template v-if="item.href === '苹果手机'">
+                    <td><a href="https://apps.apple.com/cn/app/cisco-anyconnect/id1135064690#?platform=iphone" target="_blank">去应用商店下载</a></td>
+                </template>
+                <template v-if="item.href != '苹果手机'">
+                    <td><a :href="item.href" target="_blank">点我下载</a></td>
+                </template>
             </tr>
         </table>
     </div>
@@ -26,15 +31,18 @@
             let route = useRoute()
             let softwares = ref([])
             let getVpnSoftwares = () => {
-                let names = ['Anconnect Windows10', 'Anconnect Windows7、8', 'Anconnect 安卓', 'Anconnect Macbook', 'Anconnect Macbook备用', 'Anconnect Linux']
+                // let names = ['Anconnect Windows10', 'Anconnect Windows7、8', 'Anconnect 安卓', 'Anconnect Macbook', 'Anconnect Macbook备用', 'Anconnect Linux']
+                let names = ['Anconnect Windows', 'Anconnect 安卓手机', 'Anconnect Macbook']
                 get("/vpn/vpnsoftware/").then(
                     res => {
-                        let results = res.data.res
+                        let results = [res.data.res[0],res.data.res[2],res.data.res[3]]
+                        console.log(results)
                         for (let i = 0; i < results.length; i++) {
                             // console.log(results[i])
                             results[i]['content'] = names[i]
                         }
-                        console.log(results)
+                        results.push({content:"Anyconnect 苹果手机",href:"苹果手机"})
+                        // console.log('******',results)
                         softwares.value = results
                     }
                 )
