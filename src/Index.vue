@@ -4,7 +4,7 @@
         <div class="middle">
             <div class="left">
                 <template v-if="leftInfo == 'price'">
-                    <img src="@/assets/images/slogo.png" alt="slogo图片">
+                    <!-- <img src="@/assets/images/slogo.png" alt="slogo图片"> -->
                     <ul>
                         <li>主要为留学生提供外网服务</li>
                         <li>提供多个节点可供选择</li>
