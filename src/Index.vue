@@ -44,14 +44,13 @@
     import Top from "@/components/Top";
     import Bottom from "@/components/Bottom";
     import Loading from "@/components/Loading1"
-    import UserRegister from "@/views/User/UserRegister";
-    import UserLogin from "@/views/User/UserLogin";
-    import UserPasswdReset from "@/views/User/UserPasswdReset";
-
-    import {onMounted, ref} from "vue";
+    import {defineAsyncComponent, onMounted, ref} from "vue";
     import {useRoute} from "vue-router";
     import {decode} from 'js-base64';
     import {get, post} from "@/network";
+    // import UserRegister from "@/views/User/UserRegister";
+    // import UserLogin from "@/views/User/UserLogin";
+    // import UserPasswdReset from "@/views/User/UserPasswdReset";
 
     export default {
         name: "Index",
@@ -60,9 +59,12 @@
             Top,
             Bottom,
             Loading,
-            UserRegister,
-            UserLogin,
-            UserPasswdReset
+            UserRegister: defineAsyncComponent(() => import('@/views/User/UserRegister')),
+            UserLogin: defineAsyncComponent(() => import('@/views/User/UserLogin')),
+            UserPasswd: defineAsyncComponent(() => import('@/views/User/UserPasswdReset'))
+            // UserRegister,
+            // UserLogin,
+            // UserPasswdReset
         },
         setup() {
             let route = useRoute()
