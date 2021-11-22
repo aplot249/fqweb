@@ -61,7 +61,7 @@
             Loading,
             UserRegister: defineAsyncComponent(() => import('@/views/User/UserRegister')),
             UserLogin: defineAsyncComponent(() => import('@/views/User/UserLogin')),
-            UserPasswd: defineAsyncComponent(() => import('@/views/User/UserPasswdReset'))
+            UserPasswdReset: defineAsyncComponent(() => import('@/views/User/UserPasswdReset'))
             // UserRegister,
             // UserLogin,
             // UserPasswdReset
