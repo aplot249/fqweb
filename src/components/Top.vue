@@ -1,7 +1,7 @@
 <template>
     <div class="top">
         <div id="logo">
-            <a href="https://chuanyun101.com"><img src="@/assets/images/logo.png" alt="logo"></a>
+            <a href="/"><img src="@/assets/images/logo.png" alt="logo"></a>
         </div>
         <div class="icon" @click="changeIconShow">
             <!--            <menu-fold-one theme="outline" size="38" fill="#333" v-if="!iconShow"/>-->
