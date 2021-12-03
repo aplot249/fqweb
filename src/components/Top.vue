@@ -93,7 +93,7 @@ export default {
 <style lang="scss" scoped>
 .top {
   font-size: 20px;
-  font-weight: 600px;
+  font-weight: 600;
   display: flex;
   height: 50px;
   line-height: 50px;
