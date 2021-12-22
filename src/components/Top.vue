@@ -26,9 +26,6 @@
       />
     </div>
     <ul>
-      <!--            <li>-->
-      <!--                <a href="javascript:void(0)" @click="changeLeftInfo('price')">产品价格</a>-->
-      <!--            </li>-->
       <li>
         <router-link to="/backend">操作指引</router-link>
       </li>
@@ -116,7 +113,7 @@ export default {
     top: 6px;
     right: 5px;
   }
-volar
+
   ul {
     @media screen and (max-width: 768px) {
       display: none;
