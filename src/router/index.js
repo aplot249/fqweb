@@ -44,7 +44,7 @@ const routes = [
                 path: 'vpn',
                 component: VpnCodeOrInfo,
                 meta: {
-                    title: "翻墙操作",
+                    title: " 操作",
                     requireAuthorized: true,
                     requireAdmin: false
                 }
