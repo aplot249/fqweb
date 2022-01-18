@@ -5,12 +5,12 @@
             <div class="left">
                 <template v-if="leftInfo == 'price'">
                     <!-- <img src="@/assets/images/slogo.png" alt="slogo图片"> -->
-                    <ul>
+                    <!-- <ul>
                         <li>主要为留学生提供外网服务</li>
                         <li>提供多个节点可供选择</li>
                         <li>1个月18元、3个月45元、半年72元、一年108元</li>
                         <li>安卓、苹果、Windows、Macbook均可使用，不限流量</li>
-                    </ul>
+                    </ul> -->
                 </template>
                 <template v-if="leftInfo == 'service'">
                     <img src="@/assets/images/slogo.png" alt="slogo图片">

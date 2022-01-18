@@ -1,10 +1,10 @@
 <template>
     <div>
         <h2>新用户或账号到期</h2>
-        <ul>
+        <!-- <ul>
             <li>1个月18元，3个月45元，半年72元，一年108元</li>
             <li>“使用码”联系客服获取</li>
-        </ul>
+        </ul> -->
         <input v-model="code" type="text" placeholder="填写管理员给的“使用码”"/>
         <button @click="onSubmit">提交</button>
     </div>
