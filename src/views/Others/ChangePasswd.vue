@@ -2,9 +2,9 @@
     <div class="changepasswd">
         <h2>更改密码</h2>
         <ul>
-            <li v-if="vpnchangeShow">网站的登录密码和翻墙软件的账号密码不同</li>
+            <li v-if="vpnchangeShow">网站的登录密码和 软件的账号密码不同</li>
             <li>网站登录密码只关系到本网站的登录</li>
-            <li v-if="vpnchangeShow">翻墙账号密码只关系到翻墙软件里账号的登录，该密码为账号初始化时创建，默认为123</li>
+            <li v-if="vpnchangeShow"> 账号密码只关系到 软件里账号的登录，该密码为账号初始化时创建，默认为123</li>
         </ul>
         <div>
             <span>更改网站登录密码：</span>
@@ -12,7 +12,7 @@
             <button @click="webpasswdSubmit">提交</button>
         </div>
         <div v-if="vpnchangeShow">
-            <span>更改翻墙账号密码：</span>
+            <span>更改 账号密码：</span>
             <input type="text" v-model="vpnpasswd" placeholder="仅限字母、数字（3-15位）">
             <button @click="vpnpasswdSubmit">提交</button>
         </div>
@@ -57,7 +57,7 @@
                         res => {
                             console.log(res.data)
                             vpnpasswd.value = res.data
-                            alert("翻墙账号密码更改成功")
+                            alert(" 账号密码更改成功")
                         }
                     )
                 } else {

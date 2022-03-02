@@ -4,7 +4,7 @@
         <div class="middle">
             <div class="left" :style="showMenu ? 'display:block;': 'none'">
                 <div class="title">
-                    <span>翻墙操作</span>
+                    <span> 操作</span>
                     <send theme="outline" size="24" fill="#333" strokeLinejoin="miter" strokeLinecap="butt"/>
                 </div>
                 <ul style="display: block">
@@ -30,7 +30,7 @@
                 </div>
                 <ul>
                     <li>
-                        <router-link to="/backend/software/vpn">翻墙软件</router-link>
+                        <router-link to="/backend/software/vpn"> 软件</router-link>
                     </li>
                     <!--                    <li>-->
                     <!--                        <router-link to="/backend/software/android">国外安卓软件</router-link>-->

@@ -8,7 +8,7 @@ const instance = axios.create({
     // baseURL: process.env.NODE_ENV == 'development' ? 'http://django.chuanyun101.com' : 'https://101.35.141.230:8885',
     // baseURL:"http://127.0.0.1:8000",
     // baseURL:"http://django.chuanyun101.com",
-    // timeout:20000
+    // timeout: 20000
 });
 
 
@@ -30,7 +30,7 @@ instance.interceptors.response.use(
     },
     err => {
         store.commit('changeLoadingShow', false)
-        // 如果有需要授权才可以访问的接口， 统一去login授权
+            // 如果有需要授权才可以访问的接口， 统一去login授权
         return Promise.reject(err)
     }
 )
@@ -44,7 +44,7 @@ export async function get(url, params) {
 
 export async function post(url, data) {
     return instance.post(url, data, {
-        transformRequest: [function (data) {
+        transformRequest: [function(data) {
             let res = '';
             for (let item in data) {
                 res += encodeURIComponent(item) + "=" + encodeURIComponent(data[item]) + "&"
