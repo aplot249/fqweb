@@ -2,7 +2,7 @@ import axios from "axios";
 import store from "@/store";
 
 const instance = axios.create({
-    baseURL: process.env.NODE_ENV == 'development' ? 'http://192.168.42.188:8000' : 'https://django.chuanyun101.com:9999',
+    baseURL: process.env.NODE_ENV == 'development' ? 'http://192.168.0.100:8000' : 'https://django.chuanyun101.com:9999',
     // baseURL: process.env.NODE_ENV == 'development' ? 'https://django.chuanyun101.com' : 'https://django.chuanyun101.com',
     // baseURL: process.env.NODE_ENV == 'development' ? 'http://127.0.0.1:8000' : 'https://django.chuanyun101.com',
     // baseURL: process.env.NODE_ENV == 'development' ? 'http://django.chuanyun101.com' : 'https://101.35.141.230:8885',
